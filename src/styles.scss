@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@100;300;400;500;700&display=swap');
+
+
+/* ------- color -------*/
+:root {
+  --black: #272727;
+  --red: #EC2B34;
+  --white: #FFFFFF;
+  --light-gray: #F9F9F9;
+}
+
+/* ------- font -------*/
+.font-weight-800{
+  font-weight: 800;
+}
+.font-weight-700{
+  font-weight: 700;
+}
+.font-weight-600{
+  font-weight: 600;
+}
+.font-weight-500{
+  font-weight: 500;
+}
+.font-weight-400{
+  font-weight: 400;
+}
+
+.color-black {
+  color: var(--black);
+}
+.color-red {
+  color: var(--red);
+}
+
+/* ------- balise -------*/
+
+html, body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--black);
+}
+
+li {
+  list-style: none;
+}
+
