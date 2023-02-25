@@ -1,12 +1,29 @@
 :host{
   display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 5em;
 }
 
 h1 {
   text-transform: uppercase
 }
 
+/* ------- width ------- */
+.homepage-title {
+  width: 36%;
+}
+
 img {
   height: 25rem;
 }
 
+
+@media (max-width: 700px) {
+  img {
+    display: none;
+  }
+  div {
+    margin-bottom: 5em;
+  }
+}
