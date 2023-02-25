@@ -1,0 +1,20 @@
+footer {
+  background-color: #272727;
+  color: #FFFFFF;
+}
+
+li, p{
+  font-size: 0.8rem;
+}
+
+@media (max-width: 550px) {
+  footer, div {
+    flex-direction: column;
+    //justify-content: center;
+    align-items: center;
+   position: relative;
+    ul {
+      margin-top: 2em;
+    }
+  }
+}
