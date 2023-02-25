@@ -8,12 +8,16 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { FooterComponent } from './components/footer/footer.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
-
+import { WinepageComponent } from './components/winepage/winepage.component';
 
 const routes: Routes = [
   {
     path: "",
     component: HomepageComponent,
+  },
+  {
+    path: "vins",
+    component: WinepageComponent,
   }
 ]
 
@@ -22,7 +26,8 @@ const routes: Routes = [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    HomepageComponent
+    HomepageComponent,
+    WinepageComponent
   ],
   imports: [
     BrowserModule,

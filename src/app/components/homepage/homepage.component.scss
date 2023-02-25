@@ -1,12 +1,9 @@
 :host{
-  display: flex;
+  height: calc(100% - 325px);
+  display: block;
   align-items: center;
   justify-content: space-around;
   margin: 0 5em;
-}
-
-h1 {
-  text-transform: uppercase
 }
 
 /* ------- width ------- */

@@ -23,24 +23,24 @@
 .color-legal-notice {
   color: rgba(255, 255, 255, 0.6);
 }
-
-
+.background-color-white {
+  background-color: var(--white);
+}
 
 /* ------- font weight ------- */
-.font-weight-800{
+.font-weight-800 {
   font-weight: 800;
 }
-.font-weight-700{
+.font-weight-700 {
   font-weight: 700;
 }
-.font-weight-600{
+.font-weight-600 {
   font-weight: 600;
 }
-.font-weight-500{
+.font-weight-500 {
   font-weight: 500;
 }
-//
-.font-weight-400{
+.font-weight-400 {
   font-weight: 400;
 }
 
@@ -51,6 +51,10 @@ html, body {
   color: var(--black);
   height: 100vh;
   margin: 0;
+}
+
+h1 {
+  text-transform: uppercase
 }
 
 li {
@@ -68,5 +72,12 @@ li {
   i {
     color: var(--white);
   }
+}
+
+.button-grid {
+  border-radius: 8px;
+  background-color: var(--white);
+  border: 1px solid var(--black);
+  padding: 5px;
 }
 
