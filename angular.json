@@ -133,5 +133,7 @@
       }
     }
   },
-  "defaultProject": "negosud-client-angular"
+  "cli": {
+    "analytics": false
+  }
 }
