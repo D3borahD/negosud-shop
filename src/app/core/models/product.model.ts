@@ -1,3 +1,6 @@
+import {Family} from "./family.model";
+import {House} from "./house.model";
+
 export class Product {
   idProduct!: number;
   nameProduct!: string;
@@ -9,7 +12,7 @@ export class Product {
   comment!: string;
   cepage!: string;
   automaticReplenishmentTreshold!: boolean;
-  family!: string;
-  house!: string;
+  familly!: Family;
+  house!: House;
 }
 
