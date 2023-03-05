@@ -10,6 +10,8 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { WinepageComponent } from './components/winepage/winepage.component';
 import { ContactComponent } from './components/contact/contact.component';
 import {CoreModule} from "./core/core.module";
+import {HttpClientModule} from "@angular/common/http";
+import { ProductComponent } from './components/product/product.component';
 
 const routes: Routes = [
   { path: "vins", component: WinepageComponent},
@@ -22,12 +24,14 @@ const routes: Routes = [
     AppComponent,
     HomepageComponent,
     WinepageComponent,
-    ContactComponent
+    ContactComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    CoreModule
+    CoreModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,9 +1,14 @@
 <h1 class="font-weight-800 mt-1">Nos vins</h1>
 
+<div *ngIf="family$ | async as family">
+  <h2>{{family.nameFamilly}}</h2>
+</div>
+
+
 <div class="filter-bar d-flex align-self-end mt-5">
     <select class="button-grid mx-2" id="floatingSelect" aria-label="Floating label select example" >
-      <option selected>Trier par: Prix, croissant, ...</option>
-      <option value="1">One</option>
+      <option selected  >Trier par: Prix, croissant, ...</option>
+     <option value="1">1</option>
       <option value="2">Two</option>
       <option value="3">Three</option>
     </select>
@@ -18,10 +23,10 @@
 <div class="d-flex w-100 justify-content-around mt-5">
   <div>
     <h2>Famille</h2>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultfd">
-      <label class="form-check-label" for="flexCheckDefault">
-        Default checkbox
+    <div class="form-check" *ngFor="let family of families$ | async" >
+      <input class="form-check-input" type="checkbox" value="" id="flexCheck">
+      <label class="form-check-label" for="flexCheck">
+        {{family.nameFamilly}}
       </label>
     </div>
     <hr>
@@ -38,15 +43,6 @@
     </div>
     <hr>
   </div>
-  <div>
-    <div class="card" style="width: 18rem;">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
+  <app-product *ngFor="let product of products$ | async" [product]="product"></app-product>
 </div>
 
