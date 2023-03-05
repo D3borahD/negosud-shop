@@ -1,0 +1,55 @@
+:host {
+}
+
+.card {
+  border: none;
+  border-radius: 8px;
+  background-color: var(--light-gray);
+  width: 345px;
+  height: 300px;
+}
+
+.card-body{
+  background-color: var(--grey);
+  height: 110px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  position: relative;
+  span {
+    border-radius: 4px;
+    font-size: 0.8em;
+    padding: 0.2em 1em;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+}
+
+img {
+  margin: auto;
+  max-height: 10rem;
+  max-width: 5rem;
+}
+
+span{
+  width: 20%;
+  text-align: center;
+  color: var(--white);
+  border-radius: 0 8px  0 8px;
+  font-size: 0.8em;
+}
+.card-title {
+  font-weight: bold;
+}
+
+.card-text{
+  font-size: 0.8em;
+  display: -webkit-box;
+  max-width: 300px;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
+

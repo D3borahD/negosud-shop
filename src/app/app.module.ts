@@ -1,7 +1,9 @@
 /* ----- modules ----- */
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from "@angular/router";
+import {registerLocaleData} from "@angular/common";
+import * as fr from '@angular/common/locales/fr';
 
 /* ----- components ----- */
 import { AppComponent } from './app.component';
@@ -33,7 +35,13 @@ const routes: Routes = [
     CoreModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'fr-FR'}
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(){
+    registerLocaleData(fr.default);
+  }
+}
