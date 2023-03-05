@@ -9,13 +9,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mb-2 mb-lg-0 w-100 justify-content-center">
         <li class="nav-item font-weight-700">
-          <a class="nav-link active color-black" aria-current="page" href="#">Accueil</a>
+          <a class="nav-link color-black" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Accueil</a>
         </li>
         <li class="nav-item font-weight-700">
-          <a class="nav-link color-black" href="vins">Nos Vins</a>
+          <a class="nav-link color-black" routerLink="vins" routerLinkActive="active" >Nos Vins</a>
         </li>
         <li class="nav-item font-weight-700">
-          <a class="nav-link color-black">Contact</a>
+          <a class="nav-link color-black" routerLink="contact" routerLinkActive="active">Contact</a>
         </li>
       </ul>
       <ul class="navbar-nav  mb-2 mb-lg-0">

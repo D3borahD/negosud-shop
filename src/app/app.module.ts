@@ -5,33 +5,29 @@ import { RouterModule, Routes } from "@angular/router";
 
 /* ----- components ----- */
 import { AppComponent } from './app.component';
-import { NavbarComponent } from "./components/navbar/navbar.component";
-import { FooterComponent } from './components/footer/footer.component';
+
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { WinepageComponent } from './components/winepage/winepage.component';
+import { ContactComponent } from './components/contact/contact.component';
+import {CoreModule} from "./core/core.module";
 
 const routes: Routes = [
-  {
-    path: "",
-    component: HomepageComponent,
-  },
-  {
-    path: "vins",
-    component: WinepageComponent,
-  }
+  { path: "vins", component: WinepageComponent},
+  { path: "contact", component: ContactComponent},
+  { path: "", component: HomepageComponent},
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    FooterComponent,
     HomepageComponent,
-    WinepageComponent
+    WinepageComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
