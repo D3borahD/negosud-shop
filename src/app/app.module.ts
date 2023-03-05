@@ -13,11 +13,13 @@ import { WinepageComponent } from './components/winepage/winepage.component';
 import { ContactComponent } from './components/contact/contact.component';
 import {CoreModule} from "./core/core.module";
 import {HttpClientModule} from "@angular/common/http";
-import { ProductComponent } from './components/product/product.component';
+import { ProductListComponent } from './components/product/productList/product-list.component';
+import { ProductComponent } from './components/product/product/product.component';
 
 const routes: Routes = [
   { path: "vins", component: WinepageComponent},
   { path: "contact", component: ContactComponent},
+  { path: "products/:id", component: ProductComponent},
   { path: "", component: HomepageComponent},
 ]
 
@@ -27,6 +29,7 @@ const routes: Routes = [
     HomepageComponent,
     WinepageComponent,
     ContactComponent,
+    ProductListComponent,
     ProductComponent
   ],
   imports: [

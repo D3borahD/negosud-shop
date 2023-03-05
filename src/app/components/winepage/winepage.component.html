@@ -44,7 +44,7 @@
     <hr>
   </div>
   <div class="d-flex flex-wrap">
-    <app-product *ngFor="let product of products$ | async" [product]="product" class="m-2"></app-product>
+    <app-product-list *ngFor="let product of products$ | async" [product]="product" class="m-2"></app-product-list>
   </div>
 </div>
 
