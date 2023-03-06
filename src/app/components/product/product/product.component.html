@@ -1,1 +1,36 @@
-<p>product works!</p>
+<div class="d-flex product my-auto" *ngIf="product$ | async as product">
+  <img src="assets/images/bottle.png" class="w-50 mx-auto">
+  <div class="w-50 p-2">
+    <h1>{{product.nameProduct}}</h1>
+    <ul class="mt-3 color-grey">
+      <li><span> Famille :</span> {{product.familly.nameFamilly}}</li>
+      <li><span>Maison :</span> {{product.house.nameHouse}}</li>
+      <li><span>Année :</span> {{product.year}}</li>
+    </ul>
+    <p>{{product.comment}}</p>
+    <!-- Button trigger modal -->
+    <button type="button" class=" button px-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      <i class="fa-solid fa-cart-shopping color-white"></i> Ajouter au panier
+    </button>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Ajouter au panier</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Quantité</p>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="button-black button px-3" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="button px-3"><i class="fa-solid fa-cart-shopping color-white"></i> Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

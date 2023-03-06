@@ -19,7 +19,7 @@ import { ProductComponent } from './components/product/product/product.component
 const routes: Routes = [
   { path: "vins", component: WinepageComponent},
   { path: "contact", component: ContactComponent},
-  { path: "products/:id", component: ProductComponent},
+  { path: "vins/:id", component: ProductComponent},
   { path: "", component: HomepageComponent},
 ]
 

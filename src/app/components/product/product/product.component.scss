@@ -1,0 +1,37 @@
+:host {
+  display: block;
+  height: calc(100vh - 150px - 180px);
+  margin: auto;
+}
+
+img {
+  max-height: 300px;
+  max-width: 170px;
+  width: auto;
+  height: auto;
+}
+h1{
+  font-size: 1.5em;
+}
+ul {
+  padding: 0;
+}
+li {
+  font-size: 1em;
+  list-style-position: outside;
+}
+span {
+  font-weight: bold;
+}
+
+.product {
+  width: 80vw;
+  margin: auto;
+}
+
+.modal-footer {
+  border-top: none;
+}
+.modal-header {
+  border-bottom: none;
+}

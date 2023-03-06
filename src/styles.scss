@@ -13,13 +13,20 @@
   --white: #FFFFFF;
   --light-gray: #F9F9F9;
   --grey: rgba(116, 116, 116, 0.1);
+  --grey-medium: rgba(39, 39, 39, 0.78)
 }
 
 .color-black {
   color: var(--black);
 }
+.color-white {
+  color: var(--white);
+}
 .color-red {
   color: var(--red);
+}
+.color-grey{
+  color: var(--grey-medium);
 }
 .color-legal-notice {
   color: rgba(255, 255, 255, 0.6);
@@ -31,6 +38,7 @@
 .background-color-red{
   background-color: var(--red);
 }
+
 
 /* ------- font weight ------- */
 .font-weight-800 {
@@ -77,6 +85,10 @@ li {
   i {
     color: var(--white);
   }
+}
+
+.button-black {
+  background-color: var(--black);
 }
 
 .button-grid {

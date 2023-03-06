@@ -18,7 +18,7 @@ export class ProductListComponent implements OnInit {
   }
 
   onViewDetailProduct() {
-    this.router.navigateByUrl('products/${this.product.id}')
+    this.router.navigateByUrl(`vins/${this.product.idProduct}`)
   }
 
 }
