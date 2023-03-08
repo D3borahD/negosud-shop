@@ -12,6 +12,7 @@ import {ActivatedRoute} from "@angular/router";
 export class ProductComponent implements OnInit {
 
   product$!: Observable<Product>;
+  quantity: number = 0;
 
 
   constructor(private productService: ProductService,
@@ -22,4 +23,15 @@ export class ProductComponent implements OnInit {
     this.product$ = this.productService.getProductById(productId)
   }
 
+  removeProduct() {
+    if(this.quantity === 0) {
+      this.quantity = 0;
+    } else {
+      this.quantity--;
+    }
+  }
+
+  addProduct() {
+    this.quantity++;
+  }
 }

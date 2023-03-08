@@ -12,6 +12,8 @@
     <button type="button" class=" button px-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
       <i class="fa-solid fa-cart-shopping color-white"></i> Ajouter au panier
     </button>
+
+
   </div>
 
   <!-- Modal -->
@@ -25,6 +27,15 @@
         <div class="modal-body">
           <p>Quantité</p>
         </div>
+        <div class="d-flex quantity mx-3 mb-3">
+          <button type="button" (click)="removeProduct()">-</button>
+            <div>
+              <p>{{quantity}}</p>
+            </div>
+          <button type="button" (click)="addProduct()">+</button>
+      </div>
+
+
         <div class="modal-footer justify-content-between">
           <button type="button" class="button-black button px-3" data-bs-dismiss="modal">Annuler</button>
           <button type="button" class="button px-3"><i class="fa-solid fa-cart-shopping color-white"></i> Ajouter au panier</button>

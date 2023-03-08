@@ -13,7 +13,8 @@
   --white: #FFFFFF;
   --light-gray: #F9F9F9;
   --grey: rgba(116, 116, 116, 0.1);
-  --grey-medium: rgba(39, 39, 39, 0.78)
+  --grey-medium: rgba(39, 39, 39, 0.78);
+  --grey-40:rgba(30, 30, 30, 0.4);
 }
 
 .color-black {
@@ -96,5 +97,10 @@ li {
   background-color: var(--white);
   border: 1px solid var(--black);
   padding: 5px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
 }
 
