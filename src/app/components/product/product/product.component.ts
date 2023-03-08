@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
 import {Product} from "../../../core/models/product.model";
 import {ProductService} from "../../../core/services/product.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {ShoppingCart} from "../../../core/models/shopping-cart.model";
+import {ShoppingCartService} from "../../../core/services/shopping-cart.service";
 
 @Component({
   selector: 'app-product',
@@ -11,16 +13,22 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ProductComponent implements OnInit {
 
+
   product$!: Observable<Product>;
   quantity: number = 0;
 
 
   constructor(private productService: ProductService,
-              private route:ActivatedRoute) { }
+              private route:ActivatedRoute,
+              private router:Router,
+              private shoppingCartService: ShoppingCartService) { }
 
   ngOnInit(): void {
     const productId = +this.route.snapshot.params['id']
-    this.product$ = this.productService.getProductById(productId)
+    this.product$ = this.productService.getProductById(productId);
+
+
+
   }
 
   removeProduct() {
@@ -33,5 +41,11 @@ export class ProductComponent implements OnInit {
 
   addProduct() {
     this.quantity++;
+  }
+
+  addToShoppingCart() {
+    this.router.navigateByUrl('panier');
+
+
   }
 }

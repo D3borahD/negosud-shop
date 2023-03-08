@@ -15,11 +15,13 @@ import {CoreModule} from "./core/core.module";
 import {HttpClientModule} from "@angular/common/http";
 import { ProductListComponent } from './components/product/productList/product-list.component';
 import { ProductComponent } from './components/product/product/product.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   { path: "vins", component: WinepageComponent},
   { path: "contact", component: ContactComponent},
   { path: "vins/:id", component: ProductComponent},
+  { path: "panier", component: ShoppingCartComponent},
   { path: "", component: HomepageComponent},
 ]
 
@@ -30,7 +32,8 @@ const routes: Routes = [
     WinepageComponent,
     ContactComponent,
     ProductListComponent,
-    ProductComponent
+    ProductComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,

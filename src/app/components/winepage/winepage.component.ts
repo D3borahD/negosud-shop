@@ -12,10 +12,8 @@ import {ProductService} from "../../core/services/product.service";
 })
 export class WinepageComponent implements OnInit {
 
-
   families$!: Observable<Family[]>
   family$!: Observable<Family>
-
   products$!: Observable<Product[]>
 
   constructor(private familyService:FamilyService,
@@ -28,8 +26,5 @@ export class WinepageComponent implements OnInit {
     this.family$ = this.familyService.getFamillyById(familyId)
 
     this.products$ = this.productService.getAllProducts()
-
-
   }
-
 }
