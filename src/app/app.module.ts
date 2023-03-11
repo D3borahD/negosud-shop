@@ -12,7 +12,6 @@ import { WinepageComponent } from './pages/winepage/winepage.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { CoreModule } from "./core/core.module";
 import { HttpClientModule } from "@angular/common/http";
-import { ProductListComponent } from './pages/winepage/components/product/productList/product-list.component';
 import { ProductComponent } from './pages/winepage/components/product/product/product.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { SubscriptionComponent } from './components/subscription/subscription.component';
@@ -32,6 +31,13 @@ import {MatBadgeModule} from "@angular/material/badge";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { ProductsHeaderComponent } from './pages/winepage/components/products-header/products-header.component';
 import { ProductBoxComponent } from './pages/winepage/components/product-box/product-box.component';
+import { FamiliesFiltersComponent } from './pages/winepage/components/filters/families-filters/families-filters.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatDividerModule} from "@angular/material/divider";
+import { HousesFiltersComponent } from './pages/winepage/components/filters/houses-filters/houses-filters.component';
+import { YearsFiltersComponent } from './pages/winepage/components/filters/years-filters/years-filters.component';
+import { PricesFiltersComponent } from './pages/winepage/components/filters/prices-filters/prices-filters.component';
 
 const routes: Routes = [
   { path: "vins", component: WinepageComponent},
@@ -49,13 +55,16 @@ const routes: Routes = [
     HomepageComponent,
     WinepageComponent,
     ContactComponent,
-    ProductListComponent,
     ProductComponent,
     ShoppingCartComponent,
     SubscriptionComponent,
     ConnectionComponent,
     ProductsHeaderComponent,
-    ProductBoxComponent
+    ProductBoxComponent,
+    FamiliesFiltersComponent,
+    HousesFiltersComponent,
+    YearsFiltersComponent,
+    PricesFiltersComponent
   ],
   imports: [
     BrowserModule,
@@ -63,19 +72,21 @@ const routes: Routes = [
     CoreModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
     MatSidenavModule,
     MatGridListModule,
     MatMenuModule,
     MatButtonModule,
     MatCardModule,
+    MatCheckboxModule,
+    MatDividerModule,
     MatIconModule,
     MatExpansionModule,
     MatListModule,
     MatToolbarModule,
     MatTableModule,
     MatBadgeModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR'}

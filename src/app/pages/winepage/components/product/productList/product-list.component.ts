@@ -1,3 +1,4 @@
+/*
 import {Component, Input, OnInit} from '@angular/core';
 import {ProductService} from "../../../../../core/services/product.service";
 import {Product} from "../../../../../core/models/product.model";
@@ -23,3 +24,4 @@ export class ProductListComponent implements OnInit {
   }
 
 }
+*/

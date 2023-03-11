@@ -1,0 +1,17 @@
+<div>
+  <h5>FAMILLES</h5>
+  <mat-selection-list [multiple]="false">
+    <mat-list-option *ngFor="let family of families$ | async" [value]="family">
+      <button (click)="onShowFamily(family.nameFamilly)">{{family.nameFamilly}}</button>
+
+    </mat-list-option>
+  </mat-selection-list>
+</div>
+
+<!--<h5>FAMILLES</h5>
+<ul *ngFor="let family of families$ | async">
+  <li><mat-checkbox>{{family.nameFamilly}}</mat-checkbox></li>
+</ul>-->
+
+
+
