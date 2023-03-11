@@ -1,1 +1,8 @@
-<p>houses-filters works!</p>
+<div>
+  <h5>MAISON</h5>
+  <mat-selection-list [multiple]="false">
+    <mat-list-option *ngFor="let house of houses$ | async" [value]="house">
+      <button class="text-start" (click)="onShowHouse(house.nameHouse)">{{house.nameHouse}}</button>
+    </mat-list-option>
+  </mat-selection-list>
+</div>

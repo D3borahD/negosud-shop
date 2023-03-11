@@ -4,16 +4,17 @@
 >
 <mat-drawer mode="side"
             opened
-            class="p-5 w-25 h-100 background-color-light-grey "
+            class="p-5 w-25 h-100"
 >
-  <app-families-filters (showFamily)="onShowFamily($event)"></app-families-filters>
-  <mat-divider></mat-divider>
-  <app-houses-filters></app-houses-filters>
-  <mat-divider></mat-divider>
-  <app-years-filters></app-years-filters>
-  <mat-divider></mat-divider>
-  <app-prices-filters></app-prices-filters>
-
+  <div class="background-color-light-grey text-start">
+    <app-families-filters (showFamily)="onShowFamily($event)"></app-families-filters>
+    <mat-divider></mat-divider>
+    <app-houses-filters (showHouse)="onShowHouse($event)"></app-houses-filters>
+    <mat-divider></mat-divider>
+    <app-years-filters></app-years-filters>
+    <mat-divider></mat-divider>
+    <app-prices-filters></app-prices-filters>
+  </div>
   </mat-drawer>
   <mat-drawer-content class="background-color-white" >
     <h1 class="font-weight-800 mt-1 ms-5">Nos vins</h1>

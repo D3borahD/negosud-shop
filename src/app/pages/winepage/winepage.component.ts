@@ -21,6 +21,7 @@ export class WinepageComponent implements OnInit {
   families$!: Observable<Family[]>
   family$!: Observable<Family>
   family: string | undefined
+  house: string | undefined
 
   products$!: Observable<Product[]>
 
@@ -42,5 +43,10 @@ export class WinepageComponent implements OnInit {
 
   onShowFamily(newFamily: string): void {
     this.family = newFamily
+  }
+
+  onShowHouse(newHouse: string):void {
+    this.house = newHouse
+
   }
 }
