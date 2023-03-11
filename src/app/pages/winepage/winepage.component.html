@@ -1,9 +1,36 @@
-<h1 class="font-weight-800 mt-1">Nos vins</h1>
+<mat-drawer-container
+  [autosize]="true"
+  class="min-vh-100 mx-auto"
+>
+<mat-drawer mode="side" opened class="p-5 w-25">
+  </mat-drawer>
+  <mat-drawer-content class="background-color-white" >
+    <h1 class="font-weight-800 mt-1 ms-5">Nos vins</h1>
+    <app-products-header
+      (columnsCountChange)="onColumnsCountChange($event)"
+    ></app-products-header>
+    <mat-grid-list
+      gutterSize="16"
+      [cols]="cols"
+      [rowHeight]="rowHeight"
+      class="m-5"
+    >
+      <mat-grid-tile *ngFor="let product of products$ | async" >
+       <app-product-box
+         class="w-100" [fullWidthMode]="cols ===1"
+         [product]="product"
+       ></app-product-box>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-drawer-content>
+</mat-drawer-container>
 
-<div *ngIf="family$ | async as family">
-  <h2>{{family.nameFamilly}}</h2>
-</div>
 
+
+
+
+
+<!--
 
 <div class="filter-bar d-flex align-self-end mt-5">
     <select class="button-grid mx-2" id="floatingSelect" aria-label="Floating label select example" >
@@ -24,7 +51,7 @@
   <div>
     <h2>Famille</h2>
     <div class="form-check" *ngFor="let family of families$ | async" >
-      <input class="form-check-input" type="checkbox" value="" id="flexCheck">
+      <input class="form-check-input" type="checkbox" value="{{family.nameFamilly}}" id="flexCheck">
       <label class="form-check-label" for="flexCheck">
         {{family.nameFamilly}}
       </label>
@@ -46,5 +73,5 @@
   <div class="d-flex flex-wrap">
     <app-product-list *ngFor="let product of products$ | async" [product]="product" class="m-2"></app-product-list>
   </div>
-</div>
+</div>-->
 

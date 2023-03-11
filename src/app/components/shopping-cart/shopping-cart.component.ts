@@ -15,12 +15,13 @@ export class ShoppingCartComponent implements OnInit {
 
 
 
+
   constructor(private shoppingCartService: ShoppingCartService) { }
 
   ngOnInit(): void {
     this.shoppingCart$ = this.shoppingCartService.getShoppingCartById(1);
 
-    console.log(this.shoppingCart$)
+
 
   }
 

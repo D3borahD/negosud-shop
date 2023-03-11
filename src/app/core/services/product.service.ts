@@ -1,8 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Family} from "../models/family.model";
 import {Observable} from "rxjs";
-import {House} from "../models/house.model";
 import {Product} from "../models/product.model";
 
 @Injectable({

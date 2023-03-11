@@ -1,0 +1,27 @@
+<mat-card class="text-center" (click)=" onViewDetailProduct()">
+  <div [ngClass]="{'d-flex': fullWidthMode}">
+    <div class="position-relative w-100 pt-3 background-color-light-grey border-radius-top"
+         [ngClass]="{'w-335': fullWidthMode}"
+    >
+      <img class="mb-1 h-180 text-center"
+         [ngClass]="{'h-180 m-auto': !fullWidthMode, 'h-150': fullWidthMode}"
+         src="https://via.placeholder.com/150"
+         alt="photo de bouteille de vin">
+      <span class="background-color-red badge-custom"
+      [ngClass]="{'badge-custom-list': fullWidthMode}"
+      >{{product.unitePrice | currency: 'EUR'}}</span>
+    </div>
+    <div class="w-100 h-110 text-start background-color-grey p-3 border-radius-bottum position-relative"
+      [ngClass]="{'px-3 d-flex flex-row h-170 border-radius-left': fullWidthMode}">
+      <div>
+        <span class="background-color-red badge2"
+        [ngClass]="{'badge2-list': fullWidthMode}"
+        >{{product.familly.nameFamilly}}</span>
+        <h5>{{product.nameProduct}}</h5>
+        <p class="card-text">{{product.comment}}</p>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
+

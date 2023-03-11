@@ -1,16 +1,16 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ProductService} from "../../../core/services/product.service";
-import {Product} from "../../../core/models/product.model";
+import {Product} from "../../../../core/models/product.model";
+import {ProductService} from "../../../../core/services/product.service";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  selector: 'app-product-box',
+  templateUrl: './product-box.component.html',
+  styleUrls: ['./product-box.component.scss']
 })
-export class ProductListComponent implements OnInit {
+export class ProductBoxComponent implements OnInit {
+  @Input() fullWidthMode = false
   @Input() product!: Product
-
   constructor(private productService: ProductService,
               private router: Router) { }
 
@@ -20,5 +20,4 @@ export class ProductListComponent implements OnInit {
   onViewDetailProduct() {
     this.router.navigateByUrl(`vins/${this.product.idProduct}`)
   }
-
 }
