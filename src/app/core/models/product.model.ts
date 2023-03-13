@@ -3,16 +3,18 @@ import {House} from "./house.model";
 
 export class Product {
   idProduct!: number;
+  imageUrl!: string;
   nameProduct!: string;
   unitePrice!: number;
   packagePrice!: number;
   year! : string;
-  quantity! : string;
-  needRefill!: boolean;
+  quantity! : number;
+ /* needRefill!: boolean;*/
   comment!: string;
-  cepage!: string;
-  automaticReplenishmentTreshold!: boolean;
+ /* cepage!: string;*/
+/*  automaticReplenishmentTreshold!: boolean;*/
   familly!: Family;
   house!: House;
+
 }
 

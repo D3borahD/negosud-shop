@@ -1,6 +1,9 @@
 import {Product} from "./product.model";
 
-export class ShoppingCart {
-  idShoppingCart!:number;
+export class Cart {
   products!:Product[];
 }
+
+
+
+

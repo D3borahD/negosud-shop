@@ -13,7 +13,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { CoreModule } from "./core/core.module";
 import { HttpClientModule } from "@angular/common/http";
 import { ProductComponent } from './pages/winepage/components/product/product/product.component';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { CartComponent } from './pages/cart/cart.component';
 import { SubscriptionComponent } from './components/subscription/subscription.component';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { ConnectionComponent } from './components/connection/connection.component';
@@ -38,12 +38,13 @@ import {MatDividerModule} from "@angular/material/divider";
 import { HousesFiltersComponent } from './pages/winepage/components/filters/houses-filters/houses-filters.component';
 import { YearsFiltersComponent } from './pages/winepage/components/filters/years-filters/years-filters.component';
 import { PricesFiltersComponent } from './pages/winepage/components/filters/prices-filters/prices-filters.component';
+import {CartService} from "./core/services/cart.service";
 
 const routes: Routes = [
   { path: "vins", component: WinepageComponent},
   { path: "contact", component: ContactComponent},
   { path: "vins/:id", component: ProductComponent},
-  { path: "panier", component: ShoppingCartComponent},
+  { path: "panier", component: CartComponent},
   { path: "inscription", component: SubscriptionComponent},
   { path: "connexion", component: ConnectionComponent},
   { path: "", component: HomepageComponent},
@@ -56,7 +57,7 @@ const routes: Routes = [
     WinepageComponent,
     ContactComponent,
     ProductComponent,
-    ShoppingCartComponent,
+    CartComponent,
     SubscriptionComponent,
     ConnectionComponent,
     ProductsHeaderComponent,
@@ -89,7 +90,8 @@ const routes: Routes = [
     ReactiveFormsModule
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'fr-FR'}
+    { provide: LOCALE_ID, useValue: 'fr-FR'},
+    CartService
   ],
   bootstrap: [AppComponent]
 })

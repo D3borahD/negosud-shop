@@ -4,7 +4,7 @@ import {Family} from "../../core/models/family.model";
 import {FamilyService} from "../../core/services/family.service";
 import {Product} from "../../core/models/product.model";
 import {ProductService} from "../../core/services/product.service";
-
+import {CartService} from "../../core/services/cart.service";
 
 const ROWS_HEIGHT: {[id:number]: number} = {1:200, 3:330}
 
@@ -26,7 +26,8 @@ export class WinepageComponent implements OnInit {
   products$!: Observable<Product[]>
 
   constructor(private familyService:FamilyService,
-              private productService:ProductService)
+              private productService:ProductService,
+              private  cartService:CartService)
   { }
 
   ngOnInit(): void {
@@ -47,6 +48,7 @@ export class WinepageComponent implements OnInit {
 
   onShowHouse(newHouse: string):void {
     this.house = newHouse
-
   }
+
+
 }
