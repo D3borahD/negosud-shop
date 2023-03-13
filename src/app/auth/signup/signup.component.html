@@ -24,8 +24,8 @@
     </span>
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
-    <input type="password" [formControlName]="'password'" class="form-control" id="exampleInputPassword1">
+    <label for="password" class="form-label">Mot de passe</label>
+    <input type="password" [formControlName]="'password'" class="form-control" id="password">
     <span *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched">
       Saisir un mot de passe valid
     </span>

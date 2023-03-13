@@ -1,12 +1,21 @@
 <h1 class="font-weight-800 mt-1">Connexion</h1>
-<form class="w-50 mx-auto my-5">
+<form [formGroup]="loginForm" (ngSubmit)="login()" class="w-50 mx-auto my-5">
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Adresse email</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <label for="email" class="form-label">Adresse email</label>
+    <input type="email" [formControlName]="'email'"  class="form-control" id="email" aria-describedby="emailHelp">
+    <span *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched">
+      Saisir un email valid
+    </span>
   </div>
+
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+    <label for="password"  class="form-label">Mot de passe</label>
+    <input type="password" [formControlName]="'password'"  class="form-control" id="password">
+    <span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
+      Saisir un mot de passe valid
+    </span>
   </div>
+
+
   <button type="submit" class="button px-3">Se connecter</button>
 </form>

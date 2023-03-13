@@ -39,6 +39,7 @@ import { HousesFiltersComponent } from './pages/winepage/components/filters/hous
 import { YearsFiltersComponent } from './pages/winepage/components/filters/years-filters/years-filters.component';
 import { PricesFiltersComponent } from './pages/winepage/components/filters/prices-filters/prices-filters.component';
 import {CartService} from "./core/services/cart.service";
+import {NgxWebstorageModule} from "ngx-webstorage";
 
 const routes: Routes = [
   { path: "vins", component: WinepageComponent},
@@ -87,7 +88,8 @@ const routes: Routes = [
     MatTableModule,
     MatBadgeModule,
     MatSnackBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxWebstorageModule.forRoot()
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR'},
