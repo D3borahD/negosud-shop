@@ -8,8 +8,8 @@ import { RouterModule } from '@angular/router';
   { path: "contact", component: ContactComponent},
   { path: "vins/:id", component: ProductComponent},
   { path: "panier", component: CartComponent},
-  { path: "inscription", component: SubscriptionComponent},
-  { path: "connexion", component: ConnectionComponent},
+  { path: "inscription", component: SignupComponent},
+  { path: "connexion", component: LoginComponent},
   { path: "", component: HomepageComponent},
 ];*/
 

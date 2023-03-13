@@ -14,9 +14,9 @@ import { CoreModule } from "./core/core.module";
 import { HttpClientModule } from "@angular/common/http";
 import { ProductComponent } from './pages/winepage/components/product/product/product.component';
 import { CartComponent } from './pages/cart/cart.component';
-import { SubscriptionComponent } from './components/subscription/subscription.component';
+import { SignupComponent } from './auth/signup/signup.component';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
-import { ConnectionComponent } from './components/connection/connection.component';
+import { LoginComponent } from './auth/login/login.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatMenuModule} from "@angular/material/menu";
@@ -45,8 +45,8 @@ const routes: Routes = [
   { path: "contact", component: ContactComponent},
   { path: "vins/:id", component: ProductComponent},
   { path: "panier", component: CartComponent},
-  { path: "inscription", component: SubscriptionComponent},
-  { path: "connexion", component: ConnectionComponent},
+  { path: "inscription", component: SignupComponent},
+  { path: "connexion", component: LoginComponent},
   { path: "", component: HomepageComponent},
 ]
 
@@ -58,8 +58,8 @@ const routes: Routes = [
     ContactComponent,
     ProductComponent,
     CartComponent,
-    SubscriptionComponent,
-    ConnectionComponent,
+    SignupComponent,
+    LoginComponent,
     ProductsHeaderComponent,
     ProductBoxComponent,
     FamiliesFiltersComponent,
