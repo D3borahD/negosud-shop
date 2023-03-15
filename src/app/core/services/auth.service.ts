@@ -1,3 +1,4 @@
+/*
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 
@@ -6,10 +7,11 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AuthService {
   private token!: string;
-  constructor(private http:HttpClient) {
+
+  constructor(private http: HttpClient) {
   }
 
-  login(){
+  login() {
     this.token = 'MyFakeToken'
   }
 
@@ -18,4 +20,4 @@ export class AuthService {
   }
 
 }
-
+*/

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {SingupRequestPayload} from "./singup-request.payload";
 import {AuthService} from "../shared/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +12,8 @@ import {AuthService} from "../shared/auth.service";
 export class SignupComponent implements OnInit {
   signuRequestPayload!: SingupRequestPayload;
   signupForm!: FormGroup | any;
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private router:Router) {
     this.signuRequestPayload = {
       lastname: '',
       firstname: '',
@@ -36,8 +38,16 @@ export class SignupComponent implements OnInit {
     this.signuRequestPayload.password = this.signupForm.get('password').value;
 
     this.authService.signup(this.signuRequestPayload)
-      .subscribe(data => {
+      /*.subscribe(data => {
         console.log(data)
+      })*/
+      .subscribe(()=> {
+        this.router.navigate(['connexion'],
+          {queryParams: {registered: 'true'}});
+      }, (error) => {
+        // mettre une snack bar
+        console.log('echec de l\'enregistrement')
       })
   }
+
 }
