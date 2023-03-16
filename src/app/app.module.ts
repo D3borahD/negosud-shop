@@ -11,11 +11,11 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { WinepageComponent } from './pages/winepage/winepage.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { CoreModule } from "./core/core.module";
-import { HttpClientModule } from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
 import { ProductComponent } from './pages/winepage/components/product/product/product.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { SubscriptionComponent } from './components/subscription/subscription.component';
-import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatGridListModule} from "@angular/material/grid-list";
@@ -38,8 +38,10 @@ import {MatDividerModule} from "@angular/material/divider";
 import { HousesFiltersComponent } from './pages/winepage/components/filters/houses-filters/houses-filters.component';
 import { YearsFiltersComponent } from './pages/winepage/components/filters/years-filters/years-filters.component';
 import { PricesFiltersComponent } from './pages/winepage/components/filters/prices-filters/prices-filters.component';
-import {CartService} from "./core/services/cart.service";
 import {AuthGuard} from "./core/guards/auth.guard";
+import { UserComponent } from './pages/user/user.component';
+import {TokenInterceptorProvider} from "./core/_helpers/token.interceptor";
+import {CartService} from "./core/services/cart.service";
 
 const routes: Routes = [
 
@@ -52,7 +54,7 @@ const routes: Routes = [
 
   // auth
   { path: "panier", component: CartComponent, canActivate:[AuthGuard]},
-  // mon compte = > user
+  { path: "compte", component: UserComponent, canActivate:[AuthGuard]},
 
   // public
   { path: "inscription", component: SubscriptionComponent},
@@ -76,7 +78,8 @@ const routes: Routes = [
     FamiliesFiltersComponent,
     HousesFiltersComponent,
     YearsFiltersComponent,
-    PricesFiltersComponent
+    PricesFiltersComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -101,10 +104,11 @@ const routes: Routes = [
     MatBadgeModule,
     MatSnackBarModule,
   ],
-  providers: [
+ providers: [
+    TokenInterceptorProvider,
     { provide: LOCALE_ID, useValue: 'fr-FR'},
-    CartService
-  ],
+    CartService,
+],
   bootstrap: [AppComponent]
 })
 export class AppModule {

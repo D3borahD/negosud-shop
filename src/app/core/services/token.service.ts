@@ -15,7 +15,6 @@ export class TokenService {
 
   isLogged(): boolean {
     const token = localStorage.getItem('token')
-    console.log(token)
     // not not => transforme la variable en boolean
     // si la variable est null = false
     // si la variable existe = true
