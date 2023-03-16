@@ -21,4 +21,9 @@ export class TokenService {
     // si la variable existe = true
     return !! token
   }
+
+  clearToken(): void {
+    localStorage.removeItem('token')
+    this.router.navigate(['/'])
+}
 }
