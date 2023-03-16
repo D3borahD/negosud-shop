@@ -100,7 +100,6 @@ const routes: Routes = [
     MatTableModule,
     MatBadgeModule,
     MatSnackBarModule,
-
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR'},

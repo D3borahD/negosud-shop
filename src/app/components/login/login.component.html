@@ -14,25 +14,18 @@
            name="email" id="exampleInputEmail1"
            aria-describedby="emailHelp"
            [(ngModel)]="form.email" #email="ngModel"
-           required
-    >
+           required>
     <div class="form-error" *ngIf="email.errors && f.submitted">
       L'email est requis
     </div>
-
   </div>
-
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
-
     <input type="password" class="form-control" name="password" id="exampleInputPassword1"
     [(ngModel)]="form.password" #password="ngModel" required>
-
     <div class="form-error" *ngIf="password.errors && f.submitted">
       Le mot de passe est requis
     </div>
-
   </div>
-
   <button type="submit" class="button px-3">Se connecter</button>
 </form>
