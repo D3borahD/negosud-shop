@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../core/services/auth.service";
+import {ICredentials, IToken} from "../../core/models/user.model";
+
 
 @Component({
   selector: 'app-login',
@@ -8,9 +10,9 @@ import {AuthService} from "../../core/services/auth.service";
 })
 export class LoginComponent implements OnInit {
 
-  form: any = {
-    email: null,
-    password: null,
+  form: ICredentials = {
+    email: '',
+    password: '',
   }
 
   constructor(private authService: AuthService) { }
@@ -22,8 +24,8 @@ export class LoginComponent implements OnInit {
     console.log(this.form)
     this.authService.login(this.form)
       .subscribe(
-        (data: any) => console.log(data.token),
-        (err: any) => console.log(err)
+        data => console.log(data.token),
+        err => console.log(err)
       )
   }
 }

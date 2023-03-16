@@ -1,5 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
+import {ICredentials, IToken} from "../models/user.model";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +12,8 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(credentials: any): any {
-    return this.http.post(this.url, credentials)
+  login(credentials: ICredentials): Observable<IToken> {
+    return this.http.post<IToken>(this.url, credentials)
   }
 
 
