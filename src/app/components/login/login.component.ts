@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../core/services/auth.service";
 import {ICredentials, IToken} from "../../core/models/user.model";
+import {TokenService} from "../../core/services/token.service";
 
 
 @Component({
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
     password: '',
   }
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+            private tokenService: TokenService) { }
 
   ngOnInit(): void {
   }
@@ -24,7 +26,10 @@ export class LoginComponent implements OnInit {
     console.log(this.form)
     this.authService.login(this.form)
       .subscribe(
-        data => console.log(data.token),
+        data => {
+          console.log(data.token)
+          this.tokenService.saveToken(data.token)
+        },
         err => console.log(err)
       )
   }
