@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
   { path: "vins/:id", component: ProductComponent},
   { path: "panier", component: CartComponent},
   { path: "inscription", component: SubscriptionComponent},
-  { path: "connexion", component: ConnectionComponent},
+  { path: "connexion", component: LoginComponent},
   { path: "", component: HomepageComponent},
 ];*/
 

@@ -16,7 +16,7 @@ import { ProductComponent } from './pages/winepage/components/product/product/pr
 import { CartComponent } from './pages/cart/cart.component';
 import { SubscriptionComponent } from './components/subscription/subscription.component';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
-import { ConnectionComponent } from './components/connection/connection.component';
+import { LoginComponent } from './components/login/login.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatMenuModule} from "@angular/material/menu";
@@ -33,20 +33,31 @@ import { ProductsHeaderComponent } from './pages/winepage/components/products-he
 import { ProductBoxComponent } from './pages/winepage/components/product-box/product-box.component';
 import { FamiliesFiltersComponent } from './pages/winepage/components/filters/families-filters/families-filters.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDividerModule} from "@angular/material/divider";
 import { HousesFiltersComponent } from './pages/winepage/components/filters/houses-filters/houses-filters.component';
 import { YearsFiltersComponent } from './pages/winepage/components/filters/years-filters/years-filters.component';
 import { PricesFiltersComponent } from './pages/winepage/components/filters/prices-filters/prices-filters.component';
 import {CartService} from "./core/services/cart.service";
+import {AuthGuard} from "./core/guards/auth.guard";
 
 const routes: Routes = [
+
+  //redirect 404
+
+  // public
   { path: "vins", component: WinepageComponent},
   { path: "contact", component: ContactComponent},
   { path: "vins/:id", component: ProductComponent},
-  { path: "panier", component: CartComponent},
+
+  // auth
+  { path: "panier", component: CartComponent, canActivate:[AuthGuard]},
+  // mon compte = > user
+
+  // public
   { path: "inscription", component: SubscriptionComponent},
-  { path: "connexion", component: ConnectionComponent},
+  { path: "connexion", component: LoginComponent},
+
   { path: "", component: HomepageComponent},
 ]
 
@@ -59,7 +70,7 @@ const routes: Routes = [
     ProductComponent,
     CartComponent,
     SubscriptionComponent,
-    ConnectionComponent,
+    LoginComponent,
     ProductsHeaderComponent,
     ProductBoxComponent,
     FamiliesFiltersComponent,
@@ -73,6 +84,8 @@ const routes: Routes = [
     CoreModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule,
     MatSidenavModule,
     MatGridListModule,
     MatMenuModule,
@@ -87,7 +100,7 @@ const routes: Routes = [
     MatTableModule,
     MatBadgeModule,
     MatSnackBarModule,
-    ReactiveFormsModule
+
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR'},

@@ -1,0 +1,25 @@
+<h1 class="font-weight-800 mt-1">Connexion</h1>
+
+<div>
+  <p>Email: {{form.email}}</p>
+  <p>password: {{form.password}}</p>
+</div>
+
+<form name="form" #f="ngForm"
+      class="w-50 mx-auto my-5 background-color-light-grey p-5">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Adresse email</label>
+    <input type="email" class="form-control"
+           name="email" id="exampleInputEmail1"
+           aria-describedby="emailHelp"
+           [(ngModel)]="form.email" #email="ngModel"
+    >
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+    <input type="password" class="form-control" name="password" id="exampleInputPassword1"
+    [(ngModel)]="form.password" #password="ngModel"
+    >
+  </div>
+  <button type="submit" class="button px-3">Se connecter</button>
+</form>
