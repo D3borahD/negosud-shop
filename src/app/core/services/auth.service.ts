@@ -5,17 +5,15 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class AuthService {
-  private token!: string;
-  constructor(private http:HttpClient) {
+
+  url = 'http://localhost:9000/api/v1/auth/authenticate'
+
+  constructor(private http: HttpClient) {}
+
+  login(credentials: any): any {
+    return this.http.post(this.url, credentials)
   }
 
-  login(){
-    this.token = 'MyFakeToken'
-  }
-
-  getToken(): string {
-    return this.token
-  }
 
 }
 

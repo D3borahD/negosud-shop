@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {logMessages} from "@angular-devkit/build-angular/src/builders/browser-esbuild/esbuild";
+import {AuthService} from "../../core/services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -14,17 +13,17 @@ export class LoginComponent implements OnInit {
     password: null,
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
     console.log(this.form)
-    this.http.post(`http://localhost:9000/api/v1/auth/authenticate`, this.form)
+    this.authService.login(this.form)
       .subscribe(
-        data => console.log(data),
-        err => console.log(err)
+        (data: any) => console.log(data.token),
+        (err: any) => console.log(err)
       )
   }
 }
