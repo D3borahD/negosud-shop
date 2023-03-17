@@ -24,5 +24,9 @@ export class TokenService {
   clearToken(): void {
     localStorage.removeItem('token')
     this.router.navigate(['/'])
-}
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('token')
+  }
 }
