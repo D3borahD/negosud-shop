@@ -15,6 +15,11 @@ export class Product {
 /*  automaticReplenishmentTreshold!: boolean;*/
   familly!: Family;
   house!: House;
-
 }
 
+export interface ISingleProduct {
+  data: Product
+}
+export interface IListroduct {
+  data: Product[]
+}

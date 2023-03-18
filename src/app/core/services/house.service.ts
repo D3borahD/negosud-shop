@@ -8,14 +8,15 @@ import {House} from "../models/house.model";
   providedIn: 'root'
 })
 export class HouseService {
+  url = 'http://localhost:4200/api/v1/houses'
   constructor(private http: HttpClient) {
   }
 
   getAllHouses(): Observable<House[]> {
-    return this.http.get<House[]>(`http://localhost:4200/api/v1/houses`)
+    return this.http.get<House[]>(this.url)
   }
 
   getHouseById(houseId:number): Observable<House> {
-    return this.http.get<House>(`http://localhost:4200/api/v1/houses/${houseId}`)
+    return this.http.get<House>(this.url+'/'+houseId)
   }
 }

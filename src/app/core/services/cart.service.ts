@@ -10,13 +10,14 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class CartService {
 
+  url = 'http://localhost:4200/api/v1/shopping-carts'
 
   constructor(private http: HttpClient,
               private _snackBar: MatSnackBar) {
   }
 
   /*getShoppingCartById(shoppingCartId:number): Observable<Cart> {
-    return this.http.get<Cart>(`http://localhost:4200/api/v1/shopping-carts/${shoppingCartId}`)
+    return this.http.get<Cart>(this.url +'/'+shoppingCartId)
   }*/
 
 

@@ -7,14 +7,16 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class FamilyService {
+
+  url = 'http://localhost:4200/api/v1/families'
   constructor(private http: HttpClient) {
   }
 
   getAllFamilies(): Observable<Family[]> {
-    return this.http.get<Family[]>(`http://localhost:4200/api/v1/families`)
+    return this.http.get<Family[]>(this.url)
   }
 
   getFamillyById(familyId:number): Observable<Family> {
-    return this.http.get<Family>(`http://localhost:4200/api/v1/families/${familyId}`)
+    return this.http.get<Family>(this.url+'/'+familyId)
   }
 }

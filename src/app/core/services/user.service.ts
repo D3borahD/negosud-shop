@@ -8,16 +8,16 @@ import {User} from "../models/user.model";
   providedIn: 'root'
 })
 export class UserService {
+  url = 'http://localhost:4200/api/v1/users'
   constructor(private http: HttpClient) {
   }
 
-  getUserById(userId:number): Observable<User> {
-    return this.http.get<User>(`http://localhost:4200/api/v1/users/${userId}`)
-  }
-
   getAllUser(): Observable<User[]> {
-    return this.http.get<User[]>(`http://localhost:4200/api/v1/users`)
+    return this.http.get<User[]>(this.url)
   }
 
+  getUserById(userId:number): Observable<User> {
+    return this.http.get<User>(this.url+'/'+userId)
+  }
 
 }
