@@ -44,10 +44,7 @@ export class CartComponent implements OnInit {
      this.userService.getAllUser()
       .subscribe(
         data => this.users= data,
-
       )
-
-
   }
 
   getTotal(items: Product[]): number {
