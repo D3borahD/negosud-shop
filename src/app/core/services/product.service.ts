@@ -11,11 +11,11 @@ export class ProductService {
   }
 
   getAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`http://localhost:9000/api/v1/products`)
+    return this.http.get<Product[]>(`http://localhost:4200/api/v1/products`)
   }
 
   getProductById(productId:number): Observable<Product> {
-    return this.http.get<Product>(`http://localhost:9000/api/v1/products/${productId}`)
+    return this.http.get<Product>(`http://localhost:4200/api/v1/products/${productId}`)
   }
 
 }

@@ -12,10 +12,10 @@ export class HouseService {
   }
 
   getAllHouses(): Observable<House[]> {
-    return this.http.get<House[]>(`http://localhost:9000/api/v1/houses`)
+    return this.http.get<House[]>(`http://localhost:4200/api/v1/houses`)
   }
 
   getHouseById(houseId:number): Observable<House> {
-    return this.http.get<House>(`http://localhost:9000/api/v1/houses/${houseId}`)
+    return this.http.get<House>(`http://localhost:4200/api/v1/houses/${houseId}`)
   }
 }

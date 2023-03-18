@@ -1,5 +1,15 @@
-<p>je suis le fil d'ariane!</p>
-<h1>panier work!</h1>
+<!--<p>je suis le fil d'ariane!</p>
+<h1>panier work!</h1>-->
+<h3>shoppingCart</h3>
+<p>mes users sont : </p>
+
+
+<div *ngFor="let user of users ">
+  <li>{{user.firstName}}</li>
+</div>
+
+
+
 <!--
 
 <mat-card class="max-w-7xl mx-auto" *ngIf="cart.items.length">

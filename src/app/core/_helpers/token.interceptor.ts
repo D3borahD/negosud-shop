@@ -15,15 +15,16 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor(private tokenService: TokenService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    console.log(request)
+    console.log('interceptor request :', request)
 
     const token = this.tokenService.getToken()
-
+    console.log('interceptor token : ', token )
     if(token !== null){
       let clone = request.clone({
-        headers: request.headers.set('Authorization', 'bearer ' + token
+        headers: request.headers.set('Authorization', 'Bearer ' + token
         )
       })
+      console.log('intercepotor after header ', clone)
       return next.handle(clone)
     }
 

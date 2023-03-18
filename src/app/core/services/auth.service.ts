@@ -8,13 +8,14 @@ import {Observable} from "rxjs";
 })
 export class AuthService {
 
-  url = 'http://localhost:9000/api/v1/auth/authenticate'
+  url = 'http://localhost:4200/api/v1/auth/authenticate'
 
   constructor(private http: HttpClient) {}
 
   login(credentials: ICredentials): Observable<IToken> {
     return this.http.post<IToken>(this.url, credentials)
   }
+
 
 
 }

@@ -16,7 +16,7 @@ export class CartService {
   }
 
   /*getShoppingCartById(shoppingCartId:number): Observable<Cart> {
-    return this.http.get<Cart>(`http://localhost:9000/api/v1/shopping-carts/${shoppingCartId}`)
+    return this.http.get<Cart>(`http://localhost:4200/api/v1/shopping-carts/${shoppingCartId}`)
   }*/
 
 

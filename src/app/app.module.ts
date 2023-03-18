@@ -9,14 +9,12 @@ import * as fr from '@angular/common/locales/fr';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { WinepageComponent } from './pages/winepage/winepage.component';
-import { ContactComponent } from './components/contact/contact.component';
+
 import { CoreModule } from "./core/core.module";
 import {HttpClientModule} from "@angular/common/http";
 import { ProductComponent } from './pages/winepage/components/product/product/product.component';
 import { CartComponent } from './pages/cart/cart.component';
-import { SubscriptionComponent } from './components/subscription/subscription.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { LoginComponent } from './components/login/login.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatMenuModule} from "@angular/material/menu";
@@ -42,6 +40,9 @@ import {AuthGuard} from "./core/guards/auth.guard";
 import { UserComponent } from './pages/user/user.component';
 import {TokenInterceptorProvider} from "./core/_helpers/token.interceptor";
 import {CartService} from "./core/services/cart.service";
+import {ContactComponent} from "./pages/contact/contact.component";
+import {SubscriptionComponent} from "./pages/subscription/subscription.component";
+import {LoginComponent} from "./pages/login/login.component";
 
 const routes: Routes = [
 

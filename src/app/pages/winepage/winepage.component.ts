@@ -5,6 +5,8 @@ import {FamilyService} from "../../core/services/family.service";
 import {Product} from "../../core/models/product.model";
 import {ProductService} from "../../core/services/product.service";
 import {CartService} from "../../core/services/cart.service";
+import {UserService} from "../../core/services/user.service";
+import {User} from "../../core/models/user.model";
 
 const ROWS_HEIGHT: {[id:number]: number} = {1:200, 3:330}
 
@@ -23,11 +25,16 @@ export class WinepageComponent implements OnInit {
   family: string | undefined
   house: string | undefined
 
+
   products$!: Observable<Product[]>
+  user$!: Observable<User>
+  users$!: Observable<User[]>
+
 
   constructor(private familyService:FamilyService,
               private productService:ProductService,
-              private  cartService:CartService)
+              private  cartService:CartService,
+              private userService:UserService)
   { }
 
   ngOnInit(): void {
@@ -35,6 +42,11 @@ export class WinepageComponent implements OnInit {
     const familyId = 1;
     this.family$ = this.familyService.getFamillyById(familyId)
     this.products$ = this.productService.getAllProducts()
+    const userId = 1;
+    this.user$ = this.userService.getUserById(userId)
+    this.users$ = this.userService.getAllUser()
+
+
   }
 
   onColumnsCountChange(colsNum: number):void {
