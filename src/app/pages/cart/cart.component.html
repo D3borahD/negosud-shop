@@ -101,7 +101,7 @@
 <div class="container d-flex justify-content-between">
   <div class="row" *ngIf="cart$ | async as shopping">
     <div class="d-flex mb-3 background-color-light-grey justify-content-around align-items-center box mr-5 col-11" *ngFor="let product of shopping.products" >
-      <img src="{{product.imageUrl}}" style="height: 86px;">
+      <img src="assets/images/bottle.png" style="height: 86px;">
       <div>
          <p>{{product.nameProduct}}</p>
         <div class="d-flex">
@@ -114,7 +114,7 @@
       <p>{{product.unitePrice | currency:'EUR'}}</p>
     </div>
   </div>
-<!--  <div class="background-color-light-grey box p-3 ml-3 col-4 d-flex flex-column justify-content-around" *ngIf="cart$ | async as shopping" >
+ <div class="background-color-light-grey box p-3 ml-3 col-4 d-flex flex-column justify-content-around" *ngIf="cart$ | async as shopping" >
     <p class="font-weight-700 ">ARTICLES</p>
     <div *ngFor="let product of shopping.products">
       <div class="d-flex justify-content-end rox">
@@ -127,5 +127,5 @@
       <p>Total</p>
       <button class="button px-3">Procéder au payement</button>
     </div>
-  </div>-->
+  </div>
 </div>

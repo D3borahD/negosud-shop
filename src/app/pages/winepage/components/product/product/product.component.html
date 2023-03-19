@@ -8,6 +8,7 @@
       <li><span>Année :</span> {{product.year}}</li>
     </ul>
     <p>{{product.comment}}</p>
+    <p>quantité disponible :  {{product.quantity}}</p>
     <p class="fs-3" *ngIf="priceTypeUnit">{{product.unitePrice | currency:'EUR'}}</p>
     <p class="fs-3" *ngIf="!priceTypeUnit">{{product.packagePrice | currency:'EUR'}}</p>
     <div>

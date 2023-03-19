@@ -38,8 +38,8 @@ export class CartComponent implements OnInit {
   private userService: UserService) { }
 
   ngOnInit(): void {
-  /*  this.cart$ = this.shoppingCartService.getShoppingCartById(1);
-    this.dataSource = this.cart.items*/
+   this.cart$ = this.shoppingCartService.getShoppingCartById(1);
+   /* this.dataSource = this.cart.items*/
 
      this.userService.getAllUser()
       .subscribe(

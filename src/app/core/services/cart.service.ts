@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {Cart, } from "../models/cart.model";
 import {Product} from "../models/product.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -16,9 +16,9 @@ export class CartService {
               private _snackBar: MatSnackBar) {
   }
 
-  /*getShoppingCartById(shoppingCartId:number): Observable<Cart> {
+  getShoppingCartById(shoppingCartId:number): Observable<Cart> {
     return this.http.get<Cart>(this.url +'/'+shoppingCartId)
-  }*/
+  }
 
 
 }
