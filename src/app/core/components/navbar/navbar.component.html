@@ -27,13 +27,14 @@
         </li>
       </ul>-->
 
-      <button class="nav-link button px-3" (click)="logout()">Se déconnecter</button>
+      <button class="nav-link button px-3" (click)="logout()"
+*ngIf="currentUser != null">Déconnection</button>
 
       <ul class="navbar-nav  mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link" routerLink="panier"><i class="fa-solid fa-cart-shopping color-black"></i></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="currentUser != null">
           <a class="nav-link" routerLink="compte"><i class="fa-solid fa-user color-red"></i></a>
         </li>
       </ul>

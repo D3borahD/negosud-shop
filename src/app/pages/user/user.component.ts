@@ -33,7 +33,7 @@ export class UserComponent implements OnInit, OnDestroy {
       .subscribe(
       (user) => {
         this.currentUser = user
-       // console.log('je suis dans le component USER : ', this.currentUser)
+        console.log('je suis dans le component USER : ', this.currentUser)
       }
     )
   }
