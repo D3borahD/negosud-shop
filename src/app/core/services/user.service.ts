@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {User} from "../models/user.model";
+import {NewUser, User} from "../models/user.model";
 
 
 @Injectable({
@@ -24,5 +24,11 @@ export class UserService {
   getUserByEmail(userEmail:string): Observable<User> {
     return this.http.get<User>(this.urlShort+'/'+userEmail)
   }
+
+  addUser(user:NewUser) {
+    console.log(user, 'je suis user')
+    return this.http.post(`http://localhost:4200/api/v1/auth/register`, user )
+  }
+
 
 }

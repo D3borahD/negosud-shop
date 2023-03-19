@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {ICredentials, NewUser} from "../../core/models/user.model";
+import {AuthService} from "../../core/services/auth.service";
+import {Router} from "@angular/router";
+import {UserService} from "../../core/services/user.service";
 
 @Component({
   selector: 'app-subscription',
@@ -7,9 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubscriptionComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  form: NewUser = {
+    lastname: '',
+    firstname:'',
+    email: '',
+    password: '',
   }
 
+  constructor( private userService: UserService,
+               protected router:Router) {
+  }
+
+  ngOnInit(): void {
+
+  }
+
+
+  onSubmitForm() {
+    this.userService.addUser(this.form).subscribe()
+    this.router.navigateByUrl('connexion')
+  }
 }

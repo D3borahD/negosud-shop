@@ -104,7 +104,8 @@ const routes: Routes = [
     MatTableModule,
     MatBadgeModule,
     MatSnackBarModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
  providers: [
     TokenInterceptorProvider,

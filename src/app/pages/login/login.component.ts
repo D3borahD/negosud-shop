@@ -4,7 +4,6 @@ import {ICredentials, IToken} from "../../core/models/user.model";
 import {TokenService} from "../../core/services/token.service";
 import {Router} from "@angular/router";
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,14 +19,14 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private tokenService: TokenService,
-    private router:Router
+
   ) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-   // console.log(this.form)
+
     this.authService.login(this.form)
       .subscribe(
         data => {
