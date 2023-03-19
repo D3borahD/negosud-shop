@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Observable} from "rxjs";
 import {Product} from "../../../../../core/models/product.model";
 import {ProductService} from "../../../../../core/services/product.service";
@@ -13,9 +13,13 @@ import {CartService} from "../../../../../core/services/cart.service";
 })
 export class ProductComponent implements OnInit {
 
+  @Output() addToCart = new EventEmitter()
+
   product$!: Observable<Product>;
   quantity: number = 0;
   priceTypeUnit: boolean = true;
+
+
 
 
   constructor(private productService: ProductService,
@@ -40,12 +44,33 @@ export class ProductComponent implements OnInit {
     this.quantity++;
   }
 
-/*  addToShoppingCart() {
-    /!*this.cartService.addToCart(product);*!/
-   /!* console.log(this.shoppingCartService)*!/
-    //this.shoppingCart = this.shoppingCartService.updateShoppindCart(1, product)
-    this.router.navigateByUrl('panier');
+/*  onAddToCart(): void {
+    this.cartService.addToCart({
+      imageProduct: this.product$.,
+      name:product.nameProduct,
+      price: product.unitePrice,
+      quantity: 1,
+      id: product.idProduct
+    })
   }*/
+
+  onAddToCart():void {
+    console.log("je suis un o : ", this.product$)
+    this.addToCart.emit(this.product$)
+    /*this.product$
+      .subscribe(data => {
+      console.log(data , "je suis le produit !!!")
+        this.cartService.addToCart({
+          imageProduct: this.product$.value,
+          name:product.nameProduct,
+          price: product.unitePrice,
+          quantity: 1,
+          id: product.idProduct
+        })
+
+
+    })*/
+  }
 
 
 }

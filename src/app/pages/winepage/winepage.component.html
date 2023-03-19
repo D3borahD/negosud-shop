@@ -30,7 +30,9 @@
       class="m-5"
     >
       <mat-grid-tile *ngFor="let product of products$ | async" >
+
        <app-product-box
+         (addToCart)="onAddToCart($event)"
          class="w-100" [fullWidthMode]="cols ===1"
          [product]="product"
        ></app-product-box>

@@ -63,4 +63,13 @@ export class WinepageComponent implements OnInit {
   }
 
 
+  onAddToCart(product: Product): void {
+    this.cartService.addToCart({
+      imageProduct: product.imageUrl,
+      name:product.nameProduct,
+      price: product.unitePrice,
+      quantity: 1,
+      id: product.idProduct
+    })
+  }
 }
