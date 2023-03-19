@@ -1,5 +1,15 @@
 <h3>Mon compte</h3>
 
+<div *ngIf="currentUser">
+  <p>{{currentUser.firstName}}</p>
+  <p>{{currentUser.lastname}}</p>
+  <p>{{currentUser.email}}</p>
+  <p>{{currentUser.role}}</p>
+ <!-- <div *ngFor="let cart of currentUser.shoppingCart">
+
+  </div>-->
+
+</div>
 
 <p>adresse de livraison</p>
 

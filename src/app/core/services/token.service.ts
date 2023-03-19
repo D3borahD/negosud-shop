@@ -1,19 +1,35 @@
 import { Injectable } from '@angular/core';
 import {Router} from "@angular/router";
+import {ITokenUser, User} from "../models/user.model";
+import jwtDecode from "jwt-decode";
+import {UserService} from "./user.service";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
+  public user: User | undefined = undefined
+  public currentUser: User | undefined
+  public userStorage: ITokenUser = {
+    sub: '',
+    email: '',
+  };
+  private _user$: BehaviorSubject<User|undefined> = new BehaviorSubject<User|undefined>(undefined)
+  public get user$(): Observable<User|undefined> {
+    return this._user$
+  }
+  constructor(private router: Router,
+              private userService: UserService) { }
 
-  constructor(private router: Router) { }
-
-  saveToken(token:string): void {
+  public saveToken(token:string): void {
     localStorage.setItem('token', token)
     this.router.navigate(['panier'])
   }
 
-  isLogged(): boolean {
+  public isLogged(): boolean {
+    this.getCurrentUser()
+
     const token = localStorage.getItem('token')
     // not not => transforme la variable en boolean
     // si la variable est null = false
@@ -21,41 +37,39 @@ export class TokenService {
     return !! token
   }
 
-  clearToken(): void {
+  public clearToken(): void {
     localStorage.removeItem('token')
     this.router.navigate(['/'])
   }
 
-  clearTokenExpired() {
+  public clearTokenExpired() {
     localStorage.removeItem('token')
     this.router.navigate(['connexion'])
   }
 
-  getToken(): string | null {
+  public getToken(): string | null {
     return localStorage.getItem('token')
   }
 
-
-
-/*  getPayload(){
-    let user: ITokenUser = {
-      id: 0,
-      nom: '',
-      prenom: '',
-      email: ''
-    }
-
+  public getPayload(){
     let token = localStorage.getItem('token')
     if(token != null){
-      const decode: ITokenUser =  jwtDecode<ITokenUser>(token)
-      user.id = decode.id
-      user.nom = decode.nom
-      user.prenom = decode.prenom
-      user.email = decode.email
+      const decode: ITokenUser = jwtDecode<ITokenUser>(token)
+      this.userStorage.sub = decode.sub
     }
+    return this.userStorage
+  }
 
-    return user
-
-  }*/
-
+  public getCurrentUser() {
+    let email:string;
+    email = this.getPayload().sub
+    this.userService.getUserByEmail(email).subscribe(
+      (user) => {
+        this.currentUser = user
+        this._user$.next(this.currentUser)
+       // console.log('je suis le CurrentUser de TOKENSERVICE : ', this.currentUser )
+        return this.currentUser
+      }
+    )
+  }
 }

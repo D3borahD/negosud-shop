@@ -15,7 +15,7 @@ export class ProductComponent implements OnInit {
 
   product$!: Observable<Product>;
   quantity: number = 0;
-
+  priceTypeUnit: boolean = true;
 
 
   constructor(private productService: ProductService,
@@ -46,5 +46,6 @@ export class ProductComponent implements OnInit {
     //this.shoppingCart = this.shoppingCartService.updateShoppindCart(1, product)
     this.router.navigateByUrl('panier');
   }*/
+
 
 }

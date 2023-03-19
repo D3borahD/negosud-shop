@@ -9,6 +9,32 @@
     </ul>
     <p>{{product.comment}}</p>
 
+
+    <p *ngIf="priceTypeUnit">{{product.unitePrice | currency:'EUR'}}</p>
+    <p *ngIf="!priceTypeUnit">{{product.packagePrice | currency:'EUR'}}</p>
+    <div>
+      <div class="my-3">
+        <button (click)="priceTypeUnit = true"
+        >
+          <img class="icon"
+               [ngClass]="{'icon-active': priceTypeUnit, 'icon-unactive ': !priceTypeUnit}"
+               src="assets/images/icons/bottle-icon.png">
+        </button>
+
+        <button (click)="priceTypeUnit = false">
+          <img class="icon"
+               [ngClass]="{'icon-active': !priceTypeUnit, 'icon-unactive ': priceTypeUnit}"
+               src="assets/images/icons/package-icon.png" >
+        </button>
+      </div>
+
+
+
+      <!--
+               [ngClass]="{'icon-active': priceTypeUnit, 'icon-unactive ': !priceTypeUnit}"
+-->
+
+
    <!-- <button
       (click)="onAddToCart()"
       type="button"

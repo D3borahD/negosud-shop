@@ -1,10 +1,11 @@
 <h1>Nous contacter</h1>
 
+
+
 <form name="form" #f="ngForm"
       (ngSubmit)="f.form.valid && onSubmit()"
       class="w-50 mx-auto my-5 background-color-light-grey p-5">
   <div class="mb-3">
-
 
     <label for="subject" class="form-label">Sujet</label>
     <input type="text" class="form-control"
@@ -17,11 +18,12 @@
     </div>
 
     <label for="message" class="form-label">Message</label>
-    <input type="text" class="form-control"
+    <textarea type="text" class="form-control"
            name="message" id="message"
            aria-describedby="message"
            [(ngModel)]="form.message" #message="ngModel"
-           required>
+           required></textarea>
+
     <div class="form-error" *ngIf="message.errors && f.submitted">
       Merci de saisir votre message
     </div>

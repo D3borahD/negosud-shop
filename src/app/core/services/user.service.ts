@@ -8,6 +8,7 @@ import {User} from "../models/user.model";
   providedIn: 'root'
 })
 export class UserService {
+  urlShort = 'http://localhost:4200/api/v1/user'
   url = 'http://localhost:4200/api/v1/users'
   constructor(private http: HttpClient) {
   }
@@ -18,6 +19,10 @@ export class UserService {
 
   getUserById(userId:number): Observable<User> {
     return this.http.get<User>(this.url+'/'+userId)
+  }
+
+  getUserByEmail(userEmail:string): Observable<User> {
+    return this.http.get<User>(this.urlShort+'/'+userEmail)
   }
 
 }

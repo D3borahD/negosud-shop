@@ -25,11 +25,11 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form)
+   // console.log(this.form)
     this.authService.login(this.form)
       .subscribe(
         data => {
-          console.log('login data token : ',data.token)
+          //console.log('login data token : ',data.token)
           this.tokenService.saveToken(data.token)
         },
         err => console.log(err)

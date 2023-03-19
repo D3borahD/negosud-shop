@@ -57,6 +57,17 @@ span {
     width: 25px;
     text-align: center;
     margin: auto;
-
   }
+}
+
+.icon {
+  width: 45px;/**/
+  border-radius: 8px;
+}
+
+.icon-active {
+  border: solid 1px red;
+}
+.icon-unactive {
+  border: solid 1px gray;
 }

@@ -20,10 +20,10 @@ export class User {
   lastname!:string;
   email!: string;
   password!: string;
-  Role!: string;
-  Orders?: CustomerOrder;
-  ShoppingCart?: ShoppingCart;
-  Address?: Address;
+  role!: string;
+  orders?: CustomerOrder;
+  shoppingCart?: ShoppingCart | null;
+  address?: Address;
 }
 
 export interface  ICredentials {
@@ -33,6 +33,13 @@ export interface  ICredentials {
 
 export interface IToken {
   token: string,
+}
+
+export interface ITokenUser {
+  email:string,
+  sub: string,
+  iat?:number,
+  exp?: number,
 }
  export interface mail {
    subject: string,

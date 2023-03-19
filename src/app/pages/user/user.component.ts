@@ -1,21 +1,49 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {TokenService} from "../../core/services/token.service";
+import {User} from "../../core/models/user.model";
+import {Observable, Subject, takeUntil} from "rxjs";
+import {UserService} from "../../core/services/user.service";
+
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnDestroy {
+  private destroy$!: Subject<boolean>
+  public currentUser: User | undefined
 
-  constructor(private http: HttpClient) { }
+
+
+
+  constructor(
+    private http: HttpClient,
+    private tokenService: TokenService,
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
- /*   this.http.get(`http://localhost:9000/api/v1/users`)
+    this.destroy$ = new Subject<boolean>()
+
+     this.tokenService.user$.pipe(
+       takeUntil(this.destroy$)
+     )
       .subscribe(
-        data => console.log(data),
-        err => console.log(err)
-      )*/
+      (user) => {
+        this.currentUser = user
+       // console.log('je suis dans le component USER : ', this.currentUser)
+      }
+    )
   }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true)
+  }
+
+
+
+
 
 }
