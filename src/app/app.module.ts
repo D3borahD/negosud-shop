@@ -104,6 +104,7 @@ const routes: Routes = [
     MatTableModule,
     MatBadgeModule,
     MatSnackBarModule,
+    RouterModule
   ],
  providers: [
     TokenInterceptorProvider,

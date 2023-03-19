@@ -18,20 +18,18 @@
           <a class="nav-link color-black" routerLink="contact" routerLinkActive="active">Contact</a>
         </li>
       </ul>
-    <!--  <ul class="navbar-nav  mb-2 mb-lg-0">
-        <li class="nav-item mx-3">
-          <button class="nav-link button px-3" routerLink="inscription">inscription</button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link button button-black px-3" routerLink="connexion">connexion</button>
-        </li>
-      </ul>-->
+
+      <li class="nav-item mx-3" *ngIf="!currentUser">
+        <button class="nav-link button px-3" routerLink="inscription">inscription</button>
+      </li>
+      <li class="nav-item mx-3" *ngIf="!currentUser">
+        <button class="nav-link button button-black px-3" routerLink="connexion">connection</button>
+      </li>
 
       <button class="nav-link button px-3" (click)="logout()"
 *ngIf="currentUser != null">Déconnection</button>
-
       <ul class="navbar-nav  mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="currentUser != null">
           <a class="nav-link" routerLink="panier"><i class="fa-solid fa-cart-shopping color-black"></i></a>
         </li>
         <li class="nav-item" *ngIf="currentUser != null">

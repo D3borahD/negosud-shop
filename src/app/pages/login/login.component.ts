@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../core/services/auth.service";
 import {ICredentials, IToken} from "../../core/models/user.model";
 import {TokenService} from "../../core/services/token.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
