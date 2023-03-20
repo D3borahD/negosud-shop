@@ -51,4 +51,5 @@ export class ProductComponent implements OnInit {
 
     this.router.navigateByUrl(`panier`)
   }
+
 }
