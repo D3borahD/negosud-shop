@@ -3,74 +3,122 @@ import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
 import {Cart, CartItem} from "../models/cart.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Product} from "../models/product.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   cart = new BehaviorSubject<Cart>({items: []})
+  cartItem!: CartItem
 
   url = 'http://localhost:4200/api/v1/shopping-carts'
+  shoppingCartName = 'negosud_shopping_cart'
 
   constructor(private http: HttpClient,
-              private _snackBar: MatSnackBar) {
+              private _snackBar: MatSnackBar
+  ) {
+    localStorage.setItem(this.shoppingCartName, JSON.stringify([]))
   }
 
   getShoppingCartById(shoppingCartId:number): Observable<Cart> {
     return this.http.get<Cart>(this.url +'/'+shoppingCartId)
   }
 
-  addToCart(item: CartItem):void {
-    const items = [...this.cart.value.items]
+  addToCart(item: Product, quantity: number, isPackage: boolean):void {
+    const itemsJSON: string | null = localStorage.getItem("negosud_shopping_cart")
 
-    const itemInCart = items.find((_item) => _item.id === item.id)
-    if(itemInCart){
-      itemInCart.quantity +=1
-    } else {
-      items.push(item)
+    if(!itemsJSON) {
+      let shoppingCartItem: CartItem = this.createCartItem()
+      shoppingCartItem.quantity = quantity
+      shoppingCartItem.isPackage = isPackage
+      this.updateCart([shoppingCartItem])
+      return
     }
 
-    this.cart.next({ items })
+    let items: Array<CartItem> = JSON.parse(itemsJSON)
 
-    //this._snackBar.open("1 produit ajouté dans la panier", 'Ok', {duration: 3000})
-    //console.log(this.cart.value)
-  }
-
-  clearCart(): void {
-    this.cart.next({ items: []})
-  }
-
-  removeFromCart(item: CartItem, update = true): Array<CartItem> {
-    const filteredItems =  this.cart.value.items.filter(
-      (_item) => _item.id !== item.id
-    )
-
-    if(update){
-      this.cart.next({ items: filteredItems})
+    let itemInCart = items.filter((_item) => _item.product.idProduct === item.idProduct)
+    if(itemInCart?.length == 0){
+      let shoppingCartItem: CartItem = this.createCartItem()
+      shoppingCartItem.quantity = quantity
+      shoppingCartItem.isPackage = isPackage
+      this.updateCart([...items, shoppingCartItem])
+    }
+    if(itemInCart?.length == 1){
+      // remove item from cart
+      items = items.filter((_item) => { return _item.product.idProduct !== item.idProduct })
+      // create new cartItem
+      let shoppingCartItem: CartItem = itemInCart[0]
+      shoppingCartItem.quantity = quantity
+      items.push(shoppingCartItem);
+    }
+    if(itemInCart?.length == 2){
+      // @ts-ignore
+      const currentItem: CartItem = itemInCart.find((_item) => { return item.isPackage === isPackage })
+      // remove item from cart
+      items = items.filter((_item) => { return _item.product.idProduct !== item.idProduct })
+      // create new cartItem
+      let shoppingCartItem: CartItem = currentItem
+      shoppingCartItem.quantity = quantity
+      items.push(shoppingCartItem);
     }
 
-    return filteredItems
-
+    this.updateCart(items)
   }
 
-  removeToCart(item: CartItem): void {
-    let itemForRemoval: CartItem | undefined
-    let filteredItems = this.cart.value.items.map(
-      (_item) => {
-        if(_item.id === item.id){
-          _item.quantity--
+  updateCart(items: CartItem[]) { localStorage.setItem(this.shoppingCartName, JSON.stringify(items)) }
+  getItems() { // @ts-ignore
+    return JSON.parse(localStorage.getItem(this.shoppingCartName))
+  }
 
-          if(_item.quantity === 0) {
-            itemForRemoval = _item
-          }
-        }
-        return _item
-      }
-    )
-    if (itemForRemoval) {
-      filteredItems = this.removeFromCart(itemForRemoval, false)
+  createCartItem() {
+    let item = {...this.cartItem}
+    item.uid = window.crypto.getRandomValues((new Uint32Array(1))).toString();
+    return item
+  }
+
+  clearCart(): void { this.updateCart([]) }
+
+  // @ts-ignore
+  removeFromCart(id: string, update = true): Array<CartItem> | null {
+    let itemInCart = this.getItems().filter((_item: CartItem) => _item.uid === id)
+    if(itemInCart?.length == 0){ return null }
+    if(itemInCart?.length == 1){
+      const items: Array<CartItem> = this.getItems().filter((_item: CartItem) => { return _item.uid !== id })
+      this.updateCart(items)
     }
+    if(itemInCart?.length == 2){
+      // @ts-ignore
+      const currentItem: CartItem = itemInCart.find((_item) => { return item.isPackage === isPackage })
+      const items: Array<CartItem> = this.getItems().filter((_item: CartItem) => { return _item.uid !== currentItem.uid })
+      this.updateCart(items)
+    }
+    return this.getItems()
+  }
 
-    this.cart.next({ items: filteredItems})
+  updateItemQuantity(id: string, quantity: number): void {
+    let itemInCart = this.getItems().filter((_item: CartItem) => _item.uid === id)
+    let items: Array<CartItem> = []
+    if(itemInCart?.length == 0){ return }
+    if(itemInCart?.length == 1){
+      // remove item from cart
+      items = this.getItems().filter((_item: CartItem) => { return _item.uid !== id })
+      // create new cartItem
+      let shoppingCartItem: CartItem = itemInCart[0]
+      shoppingCartItem.quantity = quantity
+      items.push(shoppingCartItem);
+    }
+    if(itemInCart?.length == 2){
+      // @ts-ignore
+      const currentItem: CartItem = itemInCart.find((_item) => { return item.isPackage === isPackage })
+      // remove item from cart
+      items = this.getItems().filter((_item: CartItem) => { return _item.uid !== id })
+      // create new cartItem
+      let shoppingCartItem: CartItem = currentItem
+      shoppingCartItem.quantity = quantity
+      items.push(shoppingCartItem);
+    }
+    this.updateCart(items)
   }
 }

@@ -56,7 +56,7 @@ export class CartComponent implements OnInit {
 
   getTotal(items: Array<CartItem>): number {
     return items.
-    map((item) => item.price * item.quantity)
+    map((item) => item.product.unitePrice * item.quantity)
       .reduce((prev, current) => prev + current, 0)
   }
 
@@ -80,8 +80,8 @@ export class CartComponent implements OnInit {
     this.cartService.removeFromCart(item)
   }
 
-  onAddQuantity(item: CartItem):void {
-    this.cartService.addToCart(item)
+  onAddQuantity(item: Product):void {
+    this.cartService.addToCart(item, 2, true)
   }
 
   onRemoveQuantity(item: CartItem) {

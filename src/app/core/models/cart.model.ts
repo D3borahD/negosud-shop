@@ -1,13 +1,14 @@
+import {Product} from "./product.model";
+
 export interface Cart {
   items: Array<CartItem>
 }
 
 export interface CartItem {
-  imageProduct:string;
-  name: string;
-  price: number;
-  quantity: number;
-  id:number;
+  uid: string
+  product: Product
+  quantity: number
+  isPackage: boolean
 
 }
 
