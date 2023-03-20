@@ -4,7 +4,6 @@ import {UserService} from "../../core/services/user.service";
 import {Cart, CartItem} from "../../core/models/cart.model";
 import {Observable} from "rxjs";
 import {Product} from "../../core/models/product.model";
-import {User} from "../../core/models/user.model";
 
 @Component({
   selector: 'app-cart',
@@ -17,9 +16,6 @@ export class CartComponent implements OnInit {
 
   @Input() product!: Product
   cart$!: Observable<Cart>;
-  users$!: Observable<User[]>;
-  users: User[] = []
-
 
 
   displayedColumns: Array<string> = [
@@ -32,8 +28,6 @@ export class CartComponent implements OnInit {
   ]
 
 
-
-
   constructor(private cartService: CartService,
   private userService: UserService) { }
   quantity: number = 0;
@@ -41,17 +35,10 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.cartService.cart.subscribe((_cart: Cart) => {
       this.cart = _cart
-      this.dataSource = this.cart.items
+      this.dataSource = this.cartService.getItems()
+      console.log("je suis datasource", this.dataSource)
     })
 
-
-   /*this.cart$ = this.shoppingCartService.getShoppingCartById(1);
-    this.dataSource = this.cart.items
-
-     this.userService.getAllUser()
-      .subscribe(
-        data => this.users = data,
-      )*/
   }
 
   getTotal(items: Array<CartItem>): number {
@@ -77,7 +64,8 @@ export class CartComponent implements OnInit {
   }
 
   onRemoveFromCart(item: CartItem): void {
-    this.cartService.removeFromCart(item)
+    let id = item.uid
+    this.cartService.removeFromCart(id, true)
   }
 
   onAddQuantity(item: Product):void {
@@ -85,6 +73,7 @@ export class CartComponent implements OnInit {
   }
 
   onRemoveQuantity(item: CartItem) {
-    this.cartService.removeToCart(item)
+    let id = item.uid
+    this.cartService.updateItemQuantity(id, 1)
   }
 }

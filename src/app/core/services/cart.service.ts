@@ -18,6 +18,8 @@ export class CartService {
   constructor(private http: HttpClient,
               private _snackBar: MatSnackBar
   ) {
+    if(localStorage.getItem(this.shoppingCartName) !== null) { return }
+    console.log('reset')
     localStorage.setItem(this.shoppingCartName, JSON.stringify([]))
   }
 
@@ -32,6 +34,7 @@ export class CartService {
       let shoppingCartItem: CartItem = this.createCartItem()
       shoppingCartItem.quantity = quantity
       shoppingCartItem.isPackage = isPackage
+      shoppingCartItem.product = item
       this.updateCart([shoppingCartItem])
       return
     }
@@ -40,12 +43,15 @@ export class CartService {
 
     let itemInCart = items.filter((_item) => _item.product.idProduct === item.idProduct)
     if(itemInCart?.length == 0){
+      console.log("0")
       let shoppingCartItem: CartItem = this.createCartItem()
       shoppingCartItem.quantity = quantity
       shoppingCartItem.isPackage = isPackage
+      shoppingCartItem.product = item
       this.updateCart([...items, shoppingCartItem])
+      return;
     }
-    if(itemInCart?.length == 1){
+    else if(itemInCart?.length == 1){
       // remove item from cart
       items = items.filter((_item) => { return _item.product.idProduct !== item.idProduct })
       // create new cartItem
@@ -53,7 +59,7 @@ export class CartService {
       shoppingCartItem.quantity = quantity
       items.push(shoppingCartItem);
     }
-    if(itemInCart?.length == 2){
+    else if(itemInCart?.length == 2){
       // @ts-ignore
       const currentItem: CartItem = itemInCart.find((_item) => { return item.isPackage === isPackage })
       // remove item from cart
@@ -67,7 +73,11 @@ export class CartService {
     this.updateCart(items)
   }
 
-  updateCart(items: CartItem[]) { localStorage.setItem(this.shoppingCartName, JSON.stringify(items)) }
+  updateCart(items: CartItem[]) {
+    localStorage.setItem(this.shoppingCartName, JSON.stringify(items))
+    console.log("cart updated")
+    console.log(this.getItems())
+  }
   getItems() { // @ts-ignore
     return JSON.parse(localStorage.getItem(this.shoppingCartName))
   }
