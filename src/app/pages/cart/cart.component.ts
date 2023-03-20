@@ -36,7 +36,6 @@ export class CartComponent implements OnInit {
     this.cartService.cart.subscribe((_cart: Cart) => {
       this.cart = _cart
       this.dataSource = this.cartService.getItems()
-      console.log("je suis datasource", this.dataSource)
     })
 
   }

@@ -20,8 +20,6 @@ export class ProductComponent implements OnInit {
   priceTypeUnit: boolean = true;
 
 
-
-
   constructor(private productService: ProductService,
               private route:ActivatedRoute,
               private router:Router,
@@ -44,33 +42,13 @@ export class ProductComponent implements OnInit {
     this.quantity++;
   }
 
-/*  onAddToCart(): void {
-    this.cartService.addToCart({
-      imageProduct: this.product$.,
-      name:product.nameProduct,
-      price: product.unitePrice,
-      quantity: 1,
-      id: product.idProduct
-    })
-  }*/
 
-  onAddToCart():void {
-    console.log("je suis un o : ", this.product$)
-    this.addToCart.emit(this.product$)
-    /*this.product$
-      .subscribe(data => {
-      console.log(data , "je suis le produit !!!")
-        this.cartService.addToCart({
-          imageProduct: this.product$.value,
-          name:product.nameProduct,
-          price: product.unitePrice,
-          quantity: 1,
-          id: product.idProduct
-        })
+  onAddToCart(product: Product):void {
+    this.cartService.addToCart(
+      product,
+      3,
+      false)
 
-
-    })*/
+    this.router.navigateByUrl(`panier`)
   }
-
-
 }

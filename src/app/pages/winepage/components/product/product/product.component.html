@@ -8,7 +8,7 @@
       <li><span>Année :</span> {{product.year}}</li>
     </ul>
     <p>{{product.comment}}</p>
-    <p>quantité disponible :  {{product.quantity}}</p>
+    <p>quantité disponible : {{product.quantity}}</p>
     <p class="fs-3" *ngIf="priceTypeUnit">{{product.unitePrice | currency:'EUR'}}</p>
     <p class="fs-3" *ngIf="!priceTypeUnit">{{product.packagePrice | currency:'EUR'}}</p>
     <div>
@@ -28,20 +28,12 @@
 
 
 
-   <button
-     (click)="onAddToCart()"
-      type="button"
-      class=" button px-3">
-      <i class="fa-solid fa-cart-shopping color-white"></i> Ajouter au panier
-    </button>
-
-
 
     <!-- Button trigger modal -->
-   <!-- <button type="button" class=" button px-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  <button type="button" class=" button px-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
       <i class="fa-solid fa-cart-shopping color-white"></i> Ajouter au panier
     </button>
-  </div>-->
+  </div>
   <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered ">
@@ -62,8 +54,10 @@
       </div>
         <div class="modal-footer justify-content-between">
           <button type="button" class="button-black button px-3" data-bs-dismiss="modal">Annuler</button>
-          <!-- (click)="addToShoppingCart()"-->
+
           <button
+            data-dismiss="modal"
+            (click)="onAddToCart(product)"
             type="button" class="button px-3"><i class="fa-solid fa-cart-shopping color-white"></i> Ajouter au panier</button>
         </div>
       </div>
