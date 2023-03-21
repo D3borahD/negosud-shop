@@ -4,8 +4,9 @@
 
 Angular version 14.2.10.  
 Bootstrap 5.2.3
-## Development server
 
+## Development server
+npm i -g @angular/cli
 Run `ng start` 
 
 ## Code scaffolding
