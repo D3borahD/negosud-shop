@@ -17,6 +17,7 @@ export class FamiliesFiltersComponent implements OnInit {
 
   ngOnInit(): void {
     this.families$ = this.familyService.getAllFamilies()
+
   }
 
   onShowFamily(family: string): void {

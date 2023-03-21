@@ -21,6 +21,7 @@
     <!--{{family}}-->
     <app-products-header
       (columnsCountChange)="onColumnsCountChange($event)"
+      (sortChange)="onSortChange($event)"
     ></app-products-header>
     <mat-grid-list
       gutterSize="16"
@@ -28,7 +29,7 @@
       [rowHeight]="rowHeight"
       class="m-5"
     >
-      <mat-grid-tile *ngFor="let product of products$ | async" >
+      <mat-grid-tile *ngFor="let product of products" >
        <app-product-box
          (addToCart)="onAddToCart($event)"
          class="w-100" [fullWidthMode]="cols ===1"
