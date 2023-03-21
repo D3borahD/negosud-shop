@@ -1,11 +1,13 @@
-class Address{
-  idAddress!: number
-  type!: string;
-  number!: string;
-  streetName!: string;
-  zip!: string;
-  city!: string;
-  additional!: string;
+export interface Address{
+  idAddress: number
+  firstname: string,
+  lastname: string,
+  type: string
+  number: string
+  streetName: string
+  zip: string
+  city: string
+  additional: string
 }
 
 class ShoppingCart {
@@ -42,6 +44,7 @@ export interface ITokenUser {
   exp?: number,
 }
  export interface mail {
+
    subject: string,
    message: string,
    email: string,

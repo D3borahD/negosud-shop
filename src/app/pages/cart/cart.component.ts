@@ -1,9 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CartService} from "../../core/services/cart.service";
-import {UserService} from "../../core/services/user.service";
 import {Cart, CartItem} from "../../core/models/cart.model";
-import {Observable} from "rxjs";
 import {Product} from "../../core/models/product.model";
+import {Address} from "../../core/models/user.model";
 
 @Component({
   selector: 'app-cart',
@@ -15,35 +14,49 @@ export class CartComponent implements OnInit {
   dataSource: CartItem[] = []
 
   @Input() product!: Product
-  cart$!: Observable<Cart>;
+ /* cart$!: Observable<Cart>;*/
 
 
-  displayedColumns: Array<string> = [
+/*  displayedColumns: Array<string> = [
     'imageUrl',
     'name',
     'price',
     'quantity',
     'total',
     'action'
-  ]
-
+  ]*/
 
   constructor(private cartService: CartService,) { }
 
   quantity: number = 0;
+  form: Address = {
+    idAddress:-1,
+    firstname: '',
+    lastname: '',
+    type:'',
+    number: '',
+    streetName: '',
+    zip: '',
+    city: '',
+    additional: '',
+  }
 
 
   ngOnInit(): void {
     this.loadCart()
-
     console.log(this.dataSource, "DATASOURCE")
 
   }
 
-  getTotal(items: Array<CartItem>): number {
-    return items.
-    map((item) => item.product.unitePrice * item.quantity)
-      .reduce((prev, current) => prev + current, 0)
+  getTotal(): number {
+    let total = 0
+    const _items: Array<CartItem> = this.cartService.getItems()
+    _items.forEach((item) => {
+      let quantity = item.quantity
+      let price = item.isPackage ? item.product.packagePrice : item.product.unitePrice
+      total += price * quantity
+    })
+    return total
   }
 
   removeProduct() {
@@ -87,4 +100,12 @@ export class CartComponent implements OnInit {
     let id = item.uid
     this.cartService.updateItemQuantity(id, 1)
   }
+
+  onSubmit() {
+    return false;
+  }
 }
+
+
+
+
