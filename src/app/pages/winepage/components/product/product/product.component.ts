@@ -19,7 +19,6 @@ export class ProductComponent implements OnInit {
   quantity: number = 0;
   priceTypeUnit: boolean = true;
 
-
   constructor(private productService: ProductService,
               private route:ActivatedRoute,
               private router:Router,
@@ -42,13 +41,14 @@ export class ProductComponent implements OnInit {
     this.quantity++;
   }
 
-
   onAddToCart(product: Product):void {
+
+    console.log('THIS PRICE TYPE : ', this.priceTypeUnit)
     this.cartService.addToCart(
       product,
-      3,
-      false)
-
+      this.quantity,
+      !this.priceTypeUnit)
+    console.log()
     this.router.navigateByUrl(`panier`)
   }
 

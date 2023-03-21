@@ -19,7 +19,6 @@ export class CartService {
               private _snackBar: MatSnackBar
   ) {
     if(localStorage.getItem(this.shoppingCartName) !== null) { return }
-    console.log('reset')
     localStorage.setItem(this.shoppingCartName, JSON.stringify([]))
   }
 
@@ -57,6 +56,8 @@ export class CartService {
       // create new cartItem
       let shoppingCartItem: CartItem = itemInCart[0]
       shoppingCartItem.quantity = quantity
+      shoppingCartItem.isPackage = isPackage
+
       items.push(shoppingCartItem);
     }
     else if(itemInCart?.length == 2){
@@ -67,9 +68,10 @@ export class CartService {
       // create new cartItem
       let shoppingCartItem: CartItem = currentItem
       shoppingCartItem.quantity = quantity
+      shoppingCartItem.isPackage = isPackage
+
       items.push(shoppingCartItem);
     }
-
     this.updateCart(items)
   }
 

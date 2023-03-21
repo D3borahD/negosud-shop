@@ -18,8 +18,7 @@
   </mat-drawer>
   <mat-drawer-content class="background-color-white" >
     <h1 class="font-weight-800 mt-1 ms-5">Nos vins</h1>
-    {{family}}
-
+    <!--{{family}}-->
     <app-products-header
       (columnsCountChange)="onColumnsCountChange($event)"
     ></app-products-header>
@@ -30,7 +29,6 @@
       class="m-5"
     >
       <mat-grid-tile *ngFor="let product of products$ | async" >
-
        <app-product-box
          (addToCart)="onAddToCart($event)"
          class="w-100" [fullWidthMode]="cols ===1"
