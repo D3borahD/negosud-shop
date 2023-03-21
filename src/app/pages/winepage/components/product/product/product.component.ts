@@ -16,7 +16,7 @@ export class ProductComponent implements OnInit {
   @Output() addToCart = new EventEmitter()
 
   product$!: Observable<Product>;
-  quantity: number = 0;
+  quantity: number = 1;
   priceTypeUnit: boolean = true;
 
   constructor(private productService: ProductService,
