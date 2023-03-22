@@ -1,1 +1,8 @@
-<p>years-filters works!</p>
+<div>
+  <h5>ANNÉES</h5>
+  <mat-selection-list [multiple]="false">
+    <mat-list-option *ngFor="let year of year$ | async" [value]="year">
+      <button class="text-start" (click)="onShowYear(year)">{{year}}</button>
+    </mat-list-option>
+  </mat-selection-list>
+</div>

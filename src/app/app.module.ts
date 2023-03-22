@@ -34,8 +34,6 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDividerModule} from "@angular/material/divider";
 import { HousesFiltersComponent } from './pages/winepage/components/filters/houses-filters/houses-filters.component';
-import { YearsFiltersComponent } from './pages/winepage/components/filters/years-filters/years-filters.component';
-import { PricesFiltersComponent } from './pages/winepage/components/filters/prices-filters/prices-filters.component';
 import {AuthGuard} from "./core/guards/auth.guard";
 import { UserComponent } from './pages/user/user.component';
 import {TokenInterceptorProvider} from "./core/_helpers/token.interceptor";
@@ -43,6 +41,7 @@ import {CartService} from "./core/services/cart.service";
 import {ContactComponent} from "./pages/contact/contact.component";
 import {SubscriptionComponent} from "./pages/subscription/subscription.component";
 import {LoginComponent} from "./pages/login/login.component";
+import {YearsFiltersComponent} from "./pages/winepage/components/filters/years-filters/years-filters.component";
 
 const routes: Routes = [
 
@@ -78,9 +77,8 @@ const routes: Routes = [
     ProductBoxComponent,
     FamiliesFiltersComponent,
     HousesFiltersComponent,
-    YearsFiltersComponent,
-    PricesFiltersComponent,
-    UserComponent
+    UserComponent,
+    YearsFiltersComponent
   ],
   imports: [
     BrowserModule,

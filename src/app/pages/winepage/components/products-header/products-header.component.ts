@@ -1,4 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-products-header',
@@ -8,10 +9,12 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 export class ProductsHeaderComponent implements OnInit {
   @Output() columnsCountChange = new EventEmitter<number>()
   @Output() sortChange = new EventEmitter<string>()
+
+ /* @Output() refresh = new EventEmitter<boolean>()*/
   sort = 'desc'
+  refresh = true
 
-
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -25,5 +28,9 @@ export class ProductsHeaderComponent implements OnInit {
     this.sort = newSort
   }
 
+  resetFilter(): void {
+    // Naviguer vers la même URL sans paramètre de filtre
+
+  }
 
 }

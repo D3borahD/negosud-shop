@@ -1,3 +1,5 @@
+<!--<button (click)="refresh()"><mat-icon>refresh</mat-icon></button>-->
+
 <mat-drawer-container
   [autosize]="true"
   class="min-vh-100 mx-auto"
@@ -11,9 +13,8 @@
     <mat-divider></mat-divider>
     <app-houses-filters (showHouse)="onShowHouse($event)"></app-houses-filters>
     <mat-divider></mat-divider>
-    <app-years-filters></app-years-filters>
-    <mat-divider></mat-divider>
-    <app-prices-filters></app-prices-filters>
+    <app-years-filters (showYear)="onShowYear($event)"></app-years-filters>
+
   </div>
   </mat-drawer>
   <mat-drawer-content class="background-color-white" >
@@ -45,20 +46,4 @@
 
 
 
-<!--
-
-
-
-<div class="d-flex w-100 justify-content-around mt-5">
-  <div>
-    <h2>Famille</h2>
-    <div class="form-check" *ngFor="let family of families$ | async" >
-      <input class="form-check-input" type="checkbox" value="{{family.nameFamilly}}" id="flexCheck">
-      <label class="form-check-label" for="flexCheck">
-        {{family.nameFamilly}}
-      </label>
-    </div>
-
-
-</div>-->
 

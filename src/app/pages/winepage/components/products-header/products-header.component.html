@@ -1,10 +1,10 @@
 <div class="me-5">
   <div class="d-flex flex-row justify-content-end">
     <div  class="button-grid">
-    <button  mat-button [matMenuTriggerFor]="sortByMenu">
-      Trier par {{sort}}
-      <mat-icon>arrow_drop_down_circle</mat-icon>
-    </button>
+      <button  mat-button [matMenuTriggerFor]="sortByMenu">
+        Trier par prix {{sort}}
+        <mat-icon>arrow_drop_down_circle</mat-icon>
+      </button>
     </div>
     <mat-menu #sortByMenu>
       <button (click)="onSortUpdated('asc')" mat-menu-item>prix croissants</button>
@@ -20,5 +20,10 @@
         <mat-icon class="pt-2">view_module</mat-icon>
       </button>
       </div>
+    <div  class="button-grid ms-3">
+      <button (click)="resetFilter()">
+        <mat-icon class="pt-2">refresh</mat-icon>
+      </button>
+    </div>
   </div>
 </div>

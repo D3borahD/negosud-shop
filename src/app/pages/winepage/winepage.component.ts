@@ -18,37 +18,22 @@ export class WinepageComponent implements OnInit, OnDestroy {
   rowHeight = ROWS_HEIGHT[this.cols]
   products: Product[] | undefined
   sort= 'desc'
+
   family: string | undefined
   house: string | undefined
+  year: string | undefined
   productsSubscription: Subscription | undefined
-
-  /*families$!: Observable<Family[]>
-  family$!: Observable<Family>*/
-
-/*  products$!: Observable<Product[]>
-  user$!: Observable<User>
-  users$!: Observable<User[]>*/
-
 
   constructor(
     private familyService:FamilyService,
     private productService:ProductService,
     private  cartService:CartService,
-           /*   private userService:UserService*/
+
   )
   { }
 
   ngOnInit(): void {
     this.getProducts()
-   /* this.families$ = this.familyService.getAllFamilies()
-    const familyId = 1;
-    this.family$ = this.familyService.getFamillyById(familyId)
-    this.products$ = this.productService.getAllProducts()*/
-   /* const userId = 1;
-    this.user$ = this.userService.getUserById(userId)
-    this.users$ = this.userService.getAllUser()*/
-
-
   }
 
   onColumnsCountChange(colsNum: number):void {
@@ -67,17 +52,28 @@ export class WinepageComponent implements OnInit, OnDestroy {
 
   onShowHouse(newHouse: string):void {
     this.house = newHouse
+    console.log(this.house)
+    this.getProducts()
   }
+
+  onShowYear(newYear: string):void {
+    this.year = newYear
+    console.log(this.year)
+    this.getProducts()
+  }
+
   getProducts(): void {
     this.productsSubscription = this.productService
-      .getAllProducts(this.sort, this.family)
+      .getAllProducts(this.sort, this.family, this.house, this.year)
       .subscribe((_products) => {
         this.products = _products;
       });
   }
 
 
-
+  reload($event: any) {
+    this.productService.getRefreshProducts()
+  }
 
   onAddToCart(product: Product): void {
     console.log("produit : ", product)
@@ -92,6 +88,7 @@ export class WinepageComponent implements OnInit, OnDestroy {
       this.productsSubscription.unsubscribe();
     }
   }
+
 
 
 }

@@ -1,8 +1,7 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Product} from "../models/product.model";
-import {Family} from "../models/family.model";
 
 @Injectable({
   providedIn: 'root'
@@ -13,31 +12,35 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
- /* getAllProducts(): Observable<Product[]> {
+  getRefreshProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.url)
-  }*/
-
-
-
-
-  getAllProducts(
-    sort = 'desc',
-    family?:string
-  ): Observable<Product[]> {
-    return this.http.get<Product[]>(
-        this.url+`${
-        family ? '/familly/'+ family : ''
-        }?sort=${sort}`
-    )
   }
 
- /* @GetMapping("/products/familly/{nameFamilly}")*/
 
-  getProductByFamilly(): Observable<Family[]>{
-    return this.http.get<Family[]>(
-      this.url+`/familly`
-    )
+
+ getAllProducts(sort = 'desc', family?: string, houses?:string, year?:string): Observable<Product[]> {
+    let url = this.url;
+   if (family) {
+      console.log('Family:', family);
+      url+=`${family ? '/familly/'+ family : ''}?sort=${sort}`
+    }
+    if (houses) {
+      console.log('House:', houses);
+      url+=`${houses? '/houses/'+ houses : ''}?sort=${sort}`
+    }
+    if (year) {
+      console.log('Years:', year);
+      url+=`${year? '/year/'+ year : ''}?sort=${sort}`
+    }
+    console.log('URL:', url);
+
+    return this.http.get<Product[]>(url);
   }
+
+
+
+
+
 
 
   getProductById(productId:number): Observable<Product> {
