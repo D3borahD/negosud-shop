@@ -1,0 +1,49 @@
+<!--<button (click)="refresh()"><mat-icon>refresh</mat-icon></button>-->
+
+<mat-drawer-container
+  [autosize]="true"
+  class="min-vh-100 mx-auto"
+>
+<mat-drawer mode="side"
+            opened
+            class="p-5 w-25 h-100"
+>
+  <div class="background-color-light-grey text-start">
+    <app-families-filters (showFamily)="onShowFamily($event)"></app-families-filters>
+    <mat-divider></mat-divider>
+    <app-houses-filters (showHouse)="onShowHouse($event)"></app-houses-filters>
+    <mat-divider></mat-divider>
+    <app-years-filters (showYear)="onShowYear($event)"></app-years-filters>
+
+  </div>
+  </mat-drawer>
+  <mat-drawer-content class="background-color-white" >
+    <h1 class="font-weight-800 mt-1 ms-5">Nos vins</h1>
+    <!--{{family}}-->
+    <app-products-header
+      (columnsCountChange)="onColumnsCountChange($event)"
+      (sortChange)="onSortChange($event)"
+    ></app-products-header>
+    <mat-grid-list
+      gutterSize="16"
+      [cols]="cols"
+      [rowHeight]="rowHeight"
+      class="m-5"
+    >
+      <mat-grid-tile *ngFor="let product of products" >
+       <app-product-box
+         (addToCart)="onAddToCart($event)"
+         class="w-100" [fullWidthMode]="cols ===1"
+         [product]="product"
+       ></app-product-box>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
+
+
+
+
+

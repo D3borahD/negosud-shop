@@ -1,0 +1,257 @@
+<h1> Mon Panier</h1>
+
+  <p *ngIf="!dataSource.length">Votre panier est vide</p>
+<div class="d-flex justify-content-between m-5 w-50">
+
+  <div class="me-4" *ngIf="dataSource.length">
+    <div class="product d-flex mb-3 background-color-light-grey justify-content-around align-items-center box mr-5 col-11" *ngFor="let element of dataSource" style="width: 600px">
+      <img src="assets/images/bottle.svg" style="height: 86px;">
+      <div>
+         <p>{{element.product.nameProduct}}</p>
+        <div class="d-flex">
+          <p class="mx-2">{{element.product.familly.nameFamilly}}</p>
+          <p class="mx-2">{{element.product.house.nameHouse}}</p>
+          <p class="mx-2">{{element.product.year}}</p>
+        </div>
+      </div>
+
+      <div class="d-flex">
+      <!--<button type="button" (click)="removeProduct()"><mat-icon>remove</mat-icon></button>-->
+      <span>{{element.quantity}}</span>
+    <!--  <button type="button" (click)="onAddQuantity(element.product)"><mat-icon>add</mat-icon></button>-->
+        </div>
+      <span *ngIf="!element.isPackage">{{element.product.unitePrice | currency:'EUR'}}</span>
+      <img *ngIf="!element.isPackage"
+           src="assets/images/icons/mdi_bottle-wine.svg" style="width: 48px">
+      <span *ngIf="!element.isPackage">{{ (element.product.unitePrice  * element.quantity) | currency:'EUR'}}</span>
+
+      <span *ngIf="element.isPackage">{{element.product.packagePrice | currency:'EUR'}}</span>
+      <img *ngIf="element.isPackage"
+           src="assets/images/icons/mdi_package-variant.svg" style="width: 48px">
+      <span *ngIf="element.isPackage">{{ (element.product.packagePrice  * element.quantity) | currency:'EUR'}}</span>
+      <button (click)="onRemoveFromCart(element)">
+        <mat-icon>close</mat-icon>
+      </button>
+  </div>
+
+    <button class="w-25 button"
+            (click)="onClearCart()">Vider mon panier
+    </button>
+  </div>
+  <div class="background-color-light-grey box p-3 ml-3 col-6 d-flex flex-column justify-content-around" *ngIf="dataSource.length" >
+    <p class="font-weight-700 ">ARTICLES</p>
+
+   <div class="d-flex justify-content-end row" *ngFor="let element of dataSource">
+        <p class="col w-100">{{element.product.nameProduct}}</p>
+        <p class="col">{{element.quantity}}</p>
+     <p class="col" *ngIf="element.isPackage">{{ (element.product.packagePrice  * element.quantity) | currency:'EUR'}}</p>
+     <p class="col" *ngIf="!element.isPackage">{{ (element.product.unitePrice  * element.quantity) | currency:'EUR'}}</p>
+      </div>
+    <div>
+      <div class="d-flex justify-content-between">
+        <p>Total : </p>
+        <p class="fs-5">{{getTotal() | currency:'EUR'}}</p>
+      </div>
+
+      <!-- Button trigger modal -->
+      <button type="button" class="button px-3" data-bs-toggle="modal" href="#exampleModalToggle" role="button">
+        Procéder au payement
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<!--<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content"  style="width: 500px">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Ajouter au panier</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+        <form name="form" #f="ngForm"
+              (ngSubmit)="f.form.valid && onSubmit()"
+              class="w-100 mx-auto background-color-light-grey p-5">
+          <div class="mb-3">
+            <p class="fw-bolder">Adresse de livraison</p>
+
+            <label for="firstname" class="form-label">Nom</label>
+            <input type="text" class="form-control"
+                   name="firstname" id="firstname"
+                   aria-describedby="firstname"
+                   [(ngModel)]="form.firstname" #firstname="ngModel">
+
+            <label for="lastname" class="form-label">Prénom</label>
+            <input type="text" class="form-control"
+                   name="lastname" id="lastname"
+                   aria-describedby="lastname"
+                   [(ngModel)]="form.lastname" #lastname="ngModel">
+
+            <label for="number" class="form-label">N°</label>
+            <input type="text" class="form-control"
+                   name="number" id="number"
+                   aria-describedby="emailHelp"
+                   [(ngModel)]="form.number" #number="ngModel">
+
+            <label for="streetName" class="form-label">Rue</label>
+            <input type="text" class="form-control"
+                      name="streetName" id="streetName"
+                      aria-describedby="streetName"
+                      [(ngModel)]="form.streetName" #streetName="ngModel"
+                      required>
+
+            <div class="form-error" *ngIf="streetName.errors && f.submitted">
+              Ce champ est obligatoire
+            </div>
+
+            <label for="additional" class="form-label">Complément d'adresse</label>
+            <input type="text" class="form-control"
+                   name="additional" id="additional"
+                   aria-describedby="additional"
+                   [(ngModel)]="form.additional" #additional="ngModel"
+                   required>
+
+
+                <label for="zip" class="form-label">Code postal</label>
+                <input type="text" class="form-control"
+                       name="zip" id="zip"
+                       aria-describedby="zip"
+                       [(ngModel)]="form.zip" #zip="ngModel"
+                       required>
+                <div class="form-error" *ngIf="zip.errors && f.submitted">
+                  Ce champ est obligatoire
+                </div>
+
+
+
+          <label for="city" class="form-label">Ville</label>
+          <input type="text" class="form-control"
+                 name="city" id="city"
+                 aria-describedby="city"
+                 [(ngModel)]="form.city" #city="ngModel"
+                 required>
+          <div class="form-error" *ngIf="city.errors && f.submitted">
+            Ce champ est obligatoire
+          </div>
+          </div>
+
+          <button type="submit" class="button px-3">Envoyer</button>
+        </form>
+
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="button-black button px-3" data-bs-dismiss="modal">Annuler</button>
+    &lt;!&ndash;    <button
+          data-bs-dismiss="modal"
+          type="button" class="button px-3"><i class="fa-solid fa-cart-shopping color-white"></i> Confirmer la commande
+        </button>&ndash;&gt;
+      </div>
+    </div>
+  </div>
+</div>-->
+
+
+
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel">Adresse de livraison</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form name="form" #f="ngForm"
+              (ngSubmit)="f.form.valid && onSubmit()"
+              class="w-100 mx-auto background-color-light-grey p-5">
+          <div class="mb-3">
+            <p class="fw-bolder">Adresse de livraison</p>
+
+            <label for="firstname" class="form-label">Nom</label>
+            <input type="text" class="form-control"
+                   name="firstname" id="firstname"
+                   aria-describedby="firstname"
+                   [(ngModel)]="form.firstname" #firstname="ngModel">
+
+            <label for="lastname" class="form-label">Prénom</label>
+            <input type="text" class="form-control"
+                   name="lastname" id="lastname"
+                   aria-describedby="lastname"
+                   [(ngModel)]="form.lastname" #lastname="ngModel">
+
+            <label for="number" class="form-label">N°</label>
+            <input type="text" class="form-control"
+                   name="number" id="number"
+                   aria-describedby="emailHelp"
+                   [(ngModel)]="form.number" #number="ngModel">
+
+            <label for="streetName" class="form-label">Rue</label>
+            <input type="text" class="form-control"
+                   name="streetName" id="streetName"
+                   aria-describedby="streetName"
+                   [(ngModel)]="form.streetName" #streetName="ngModel"
+                   required>
+
+            <div class="form-error" *ngIf="streetName.errors && f.submitted">
+              Ce champ est obligatoire
+            </div>
+
+            <label for="additional" class="form-label">Complément d'adresse</label>
+            <input type="text" class="form-control"
+                   name="additional" id="additional"
+                   aria-describedby="additional"
+                   [(ngModel)]="form.additional" #additional="ngModel"
+                   required>
+
+
+            <label for="zip" class="form-label">Code postal</label>
+            <input type="text" class="form-control"
+                   name="zip" id="zip"
+                   aria-describedby="zip"
+                   [(ngModel)]="form.zip" #zip="ngModel"
+                   required>
+            <div class="form-error" *ngIf="zip.errors && f.submitted">
+              Ce champ est obligatoire
+            </div>
+
+            <label for="city" class="form-label">Ville</label>
+            <input type="text" class="form-control"
+                   name="city" id="city"
+                   aria-describedby="city"
+                   [(ngModel)]="form.city" #city="ngModel"
+                   required>
+            <div class="form-error" *ngIf="city.errors && f.submitted">
+              Ce champ est obligatoire
+            </div>
+          </div>
+          <button type="submit" class="button px-3" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Envoyer</button>
+        <!--  <button type="submit" class="button px-3">Envoyer</button>-->
+        </form>
+      </div>
+      <div class="modal-footer">
+       <!-- <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Payement</button>-->
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel2">Payment</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Procédure d'achat
+      </div>
+      <div class="modal-footer">
+        <button class="button button-black px-3" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Revenir</button>
+        <button class="button px-3" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Finaliser la commande</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

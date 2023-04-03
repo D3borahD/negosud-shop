@@ -1,0 +1,89 @@
+.h-180 {
+  height: 180px
+}
+.h-150 {
+  height: 150px;
+}
+
+.h-110 {
+  height: 120px;
+}
+
+.h-170 {
+  height: 170px;
+}
+
+.w-335{
+  max-width: 335px;
+}
+
+.card-text{
+  font-size: 0.8em;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+mat-card {
+  border-radius: 8px;
+  padding: 0;
+}
+
+.badge-custom{
+  position: absolute;
+  display: block;
+  top:0;
+  right: 0;
+  width: 75px;
+  color: var(--white);
+  border-radius: 0 8px  0 8px;
+  font-size: 0.8em;
+}
+.badge-custom-list{
+  position: absolute;
+  display: block;
+  top:20px;
+  right: 20px;
+  width: 75px;
+  color: var(--white);
+  border-radius: 8px;
+  font-size: 0.8em;
+}
+
+.badge2 {
+  position: absolute;
+  text-align: center;
+  display: block;
+  bottom:80px;
+  right: 20px;
+  width: 75px;
+  color: var(--white);
+  border-radius: 8px;
+  font-size: 0.8em;
+}
+
+.badge2-list {
+  position: absolute;
+  text-align: center;
+  display: block;
+  bottom:30px;
+  left: 20px;
+  width: 75px;
+  color: var(--white);
+  border-radius: 8px;
+  font-size: 0.8em;
+}
+
+.border-radius-bottum {
+  border-radius: 0 0 8px 8px;
+}
+.border-radius-top {
+  border-radius: 8px 8px 0 0;
+}
+
+.border-radius-left {
+  border-radius: 0 8px 8px 0;
+}
+
+

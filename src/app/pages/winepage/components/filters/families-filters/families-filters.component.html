@@ -1,0 +1,12 @@
+<div>
+  <h5>FAMILLES</h5>
+  <mat-selection-list [multiple]="false">
+    <mat-list-option *ngFor="let family of families$ | async" [value]="family">
+      <button class="text-start" (click)="onShowFamily(family.nameFamilly)">{{family.nameFamilly}}</button>
+    </mat-list-option>
+  </mat-selection-list>
+</div>
+
+
+
+

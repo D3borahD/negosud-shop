@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg sticky-top background-color-white">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="../assets/images/logo_negosud.png" alt="negosug" width="100" height="100">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0 w-100 justify-content-center">
+        <li class="nav-item font-weight-700">
+          <a class="nav-link color-black" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Accueil</a>
+        </li>
+        <li class="nav-item font-weight-700">
+          <a class="nav-link color-black" routerLink="vins" routerLinkActive="active" >Nos Vins</a>
+        </li>
+        <li class="nav-item font-weight-700">
+          <a class="nav-link color-black" routerLink="contact" routerLinkActive="active">Contact</a>
+        </li>
+      </ul>
+
+      <li class="nav-item mx-3" *ngIf="!currentUser">
+        <button class="nav-link button px-3" routerLink="inscription">inscription</button>
+      </li>
+      <li class="nav-item mx-3" *ngIf="!currentUser">
+        <button class="nav-link button button-black px-3" routerLink="connexion">connection</button>
+      </li>
+
+      <button class="nav-link button px-3" (click)="logout()"
+*ngIf="currentUser != null">Déconnection</button>
+      <ul class="navbar-nav  mb-2 mb-lg-0">
+        <li class="nav-item" *ngIf="currentUser != null">
+          <a class="nav-link" routerLink="panier"><i class="fa-solid fa-cart-shopping color-black"></i></a>
+        </li>
+        <li class="nav-item" *ngIf="currentUser != null">
+          <a class="nav-link" routerLink="compte"><i class="fa-solid fa-user color-red"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

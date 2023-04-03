@@ -1,1 +1,125 @@
-/* You can add global styles to this file, and also import other style files */
+/* ------- fontawasome ------- */
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/solid';
+
+/* ------- font ------- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@100;300;400;500;700&display=swap');
+
+
+/* ------- color ------- */
+:root {
+  --black: #272727;
+  --red: #EC2B34;
+  --white: #FFFFFF;
+  --light-gray: #F9F9F9;
+  --grey: rgba(116, 116, 116, 0.1);
+  --grey-medium: rgba(39, 39, 39, 0.78);
+  --grey-40:rgba(30, 30, 30, 0.4);
+}
+
+.color-black {
+  color: var(--black);
+}
+.color-white {
+  color: var(--white);
+}
+.color-red {
+  color: var(--red);
+}
+.color-grey{
+  color: var(--grey-medium);
+}
+.color-legal-notice {
+  color: rgba(255, 255, 255, 0.6);
+}
+.background-color-white {
+  background-color: var(--white);
+}
+.background-color-light-grey {
+  background-color: var(--light-gray);
+}
+.background-color-grey{
+  background-color: var(--grey);
+}
+
+.background-color-red{
+  background-color: var(--red);
+}
+.background-color-black{
+  background-color: var(--black);
+}
+
+/* ------- font weight ------- */
+.font-weight-800 {
+  font-weight: 800;
+}
+.font-weight-700 {
+  font-weight: 700;
+}
+.font-weight-600 {
+  font-weight: 600;
+}
+.font-weight-500 {
+  font-weight: 500;
+}
+.font-weight-400 {
+  font-weight: 400;
+}
+
+/* ------- markup -------*/
+
+html, body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--black);
+  height: 100vh;
+  margin: 0;
+}
+
+h1 {
+  text-transform: uppercase;
+}
+
+li {
+  list-style: none;
+  font-size: 1.3em;
+}
+
+form{
+  border-radius: 8px;
+}
+
+
+
+/* ------- button -------*/
+.button {
+  border-radius: 8px;
+  background-color: var(--red);
+  padding: 5px;
+  border: none;
+  color: var(--white);
+  i {
+    color: var(--white);
+  }
+}
+
+.button-black {
+  background-color: var(--black);
+}
+
+.button-grid {
+  border-radius: 8px;
+  background-color: var(--white);
+  border: 1px solid var(--black);
+  padding: 5px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+

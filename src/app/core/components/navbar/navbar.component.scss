@@ -1,0 +1,21 @@
+
+
+.active{
+  width: 100%;
+  position: relative;
+}
+
+.active:after  {
+  content:'';
+  width: 20px;
+  position: absolute;
+  border-bottom: 2px solid var(--red);
+  bottom: 4px;
+  left: 40%;
+}
+
+@media (max-width: 991px) {
+  .active::after {
+    content: none;
+  }
+}

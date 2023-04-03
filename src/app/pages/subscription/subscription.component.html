@@ -1,0 +1,55 @@
+<h1>S'inscrire</h1>
+<form name="form" #f="ngForm"
+      (ngSubmit)="f.form.valid && onSubmitForm()"
+      class="w-50 mx-auto my-5 background-color-light-grey p-5">
+
+  <div class="mb-3">
+    <label for="lastname" class="form-label">lastname</label>
+    <input type="text" class="form-control"
+           name="lastname" id="lastname"
+           aria-describedby="emailHelp"
+           [(ngModel)]="form.lastname" #lastname="ngModel"
+           required>
+    <div class="form-error" *ngIf="lastname.errors && f.submitted">
+      Le nom est requis
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="firstname" class="form-label">firstname</label>
+    <input type="text" class="form-control"
+           name="firstname" id="firstname"
+           aria-describedby="emailHelp"
+           [(ngModel)]="form.firstname" #firstname="ngModel"
+           required>
+    <div class="form-error" *ngIf="firstname.errors && f.submitted">
+      Le prénom est requis
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Adresse email</label>
+    <input type="email" class="form-control"
+           name="email" id="exampleInputEmail1"
+           aria-describedby="emailHelp"
+           [(ngModel)]="form.email" #email="ngModel"
+           required>
+    <div class="form-error" *ngIf="email.errors && f.submitted">
+      L'email est requis
+    </div>
+  </div>
+
+
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+    <input type="password" class="form-control" name="password" id="exampleInputPassword1"
+           [(ngModel)]="form.password" #password="ngModel" required>
+    <div class="form-error" *ngIf="password.errors && f.submitted">
+      Le mot de passe est requis
+    </div>
+  </div>
+  <button type="submit" class="button px-3">Se connecter</button>
+</form>
+
+

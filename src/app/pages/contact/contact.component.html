@@ -1,0 +1,43 @@
+<h1>Nous contacter</h1>
+
+
+
+<form name="form" #f="ngForm"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      class="w-50 mx-auto my-5 background-color-light-grey p-5">
+  <div class="mb-3">
+
+    <label for="subject" class="form-label">Sujet</label>
+    <input type="text" class="form-control"
+           name="subject" id="subject"
+           aria-describedby="emailHelp"
+           [(ngModel)]="form.subject" #subject="ngModel"
+           required>
+    <div class="form-error" *ngIf="subject.errors && f.submitted">
+      Merci de renseigner un objet
+    </div>
+
+    <label for="message" class="form-label">Message</label>
+    <textarea type="text" class="form-control"
+           name="message" id="message"
+           aria-describedby="message"
+           [(ngModel)]="form.message" #message="ngModel"
+           required></textarea>
+
+    <div class="form-error" *ngIf="message.errors && f.submitted">
+      Merci de saisir votre message
+    </div>
+
+    <label for="exampleInputEmail1" class="form-label">Adresse email</label>
+    <input type="email" class="form-control"
+           name="email" id="exampleInputEmail1"
+           aria-describedby="emailHelp"
+           [(ngModel)]="form.email" #email="ngModel"
+           required>
+    <div class="form-error" *ngIf="email.errors && f.submitted">
+      L'email est requis
+    </div>
+  </div>
+
+  <button type="submit" class="button px-3">Envoyer</button>
+</form>
